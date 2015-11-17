@@ -1,0 +1,22 @@
+
+
+
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.tpfinal.modelo.Empleado" table="Empleado">
+        <id name="IDempleado" column="IDempleado">
+        
+        </id>
+        <property name="Administrador" type="boolean" column="administrador" />
+        <property name="Controseña" type="string" column="contraseña" />
+        <property name="Nomre" type="string" column="nombre" />
+        <property name="Apellido" type="string" column="apellido" />
+        <property name="Domicilio" type="string" column="Domicilio"/>
+        <property name="Mail" type="string" column="mail"/>
+        <property name="DiaNacimiento" type="string" column="diaNacimiento"/>
+        <property name="MesNacimiento" type="string" column="mesNacimiento"/>
+        <property name="Actividad" type="boolean" column="actividad"/>
+        <property name="Telefono" type="String" column="telefono"/>
+    </class>
+</hibernate-mapping>

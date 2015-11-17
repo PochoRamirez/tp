@@ -1,0 +1,20 @@
+
+
+
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.tpfinal.modelo.Venta" table="Venta">
+        <id name="IDventa" column="IDventa">
+        
+        </id>
+        <property name="DNI" type="string" column="DNI" />
+        <property name="IDarticulo" type="string" column="IDarticulo" />
+        <property name="IDempleado" type="float" column="IDempleado"/>
+        <property name="MontoTotal" type="int" column="MontoTotal"/>
+        <property name="DiaVenta" type="string" column="diaVenta"/>
+        <property name="MesVenta" type="string" column="MesVenta"/>
+        <property name="AñoVenta" type="string" column="añoVenta"/>
+        <property name="MinutoVenta" type="String" column="MinutoVenta"/>
+    </class>
+</hibernate-mapping>
