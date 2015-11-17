@@ -11,20 +11,18 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.tpfinal.modelo.Articulo;
 
-
 /**
  *
  * @author Agustin
  */
 public class ModificarArticulo extends javax.swing.JFrame {
 
-                 Connection con; 
-        PreparedStatement s; 
-        ResultSet r;  
-        ResultSetMetaData rsm;
-        DefaultTableModel dtm;  
-    
-    
+    Connection con;
+    PreparedStatement s;
+    ResultSet r;
+    ResultSetMetaData rsm;
+    DefaultTableModel dtm;
+
     public ModificarArticulo() {
         initComponents();
     }
@@ -260,11 +258,11 @@ public class ModificarArticulo extends javax.swing.JFrame {
 
         Articulo z = new Articulo();
         z.CargarArticulo(jTextFielddni.getText());
-        
-                    this.jTextFieldnombre.setText(z.getNombre());
-                    this.jTextFieldmarca.setText(z.getMarca());
+
+        this.jTextFieldnombre.setText(z.getNombre());
+        this.jTextFieldmarca.setText(z.getMarca());
           //  problema porque no es string        this.jTextFieldpv.setText(z.getPrecio());
-          //   idem                               this.jTextFieldstock.setText(z.getStock());
+        //   idem                               this.jTextFieldstock.setText(z.getStock());
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -279,8 +277,8 @@ public class ModificarArticulo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-       Articulo a = new Articulo();
-       a.ModificarArticulo(jTextFielddni.getText(), jTextFieldnombre.getText(), jTextFieldmarca.getText(),jTextFieldpv.getText(), jTextFieldstock.getText());
+        Articulo a = new Articulo();
+        a.ModificarArticulo(jTextFielddni.getText(), jTextFieldnombre.getText(), jTextFieldmarca.getText(), jTextFieldpv.getText(), jTextFieldstock.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

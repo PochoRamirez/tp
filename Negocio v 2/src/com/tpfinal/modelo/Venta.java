@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.tpfinal.modelo;
 
 import java.sql.Connection;
@@ -17,11 +12,12 @@ import javax.swing.JOptionPane;
  * @author Desi
  */
 public class Venta {
+
     int IDventa;
     String dni;
-    List <Articulo> articulos;
+    List<Articulo> articulos;
     int IDempleado;
-    Float montototal ;
+    Float montototal;
     String Diaventa;
     String Mesventa;
     String Añoventa;
@@ -29,9 +25,6 @@ public class Venta {
 
     public Venta() {
     }
-
-    
-    
 
     public List<Articulo> getArticulos() {
         return articulos;
@@ -44,7 +37,6 @@ public class Venta {
     public String getDni() {
         return dni;
     }
-
 
     public int getIDempleado() {
         return IDempleado;
@@ -105,60 +97,40 @@ public class Venta {
     public void setMinutoventa(String Minutoventa) {
         this.Minutoventa = Minutoventa;
     }
-    
-   
-  public void Venta(String codpro, String prod, String cant, String car, String elid){
-        Connection con=null;                         
-         PreparedStatement s;
-       
-        String url="jdbc:://Agustin-PC:1433;databaseName=Negocio";
-        String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String user="usuario_java";
-        String clave="123";
-       
-       
-          try{
-           Class.forName(driver);
-           con=DriverManager.getConnection(url,user,clave);
-           
-        
-           
-                                                                                                                           
-           
-           s=con.prepareStatement("insert into Venta values (?,?,?,?,?,?,?,?)");
-           
-     
-           
-           s.setString(1,codpro );
-           s.setString(2,prod );
-           s.setString(3,cant );
-           
-        
-           
-           s.setString(4,car);
+
+    public void Venta(String codpro, String prod, String cant, String car, String elid) {
+        Connection con = null;
+        PreparedStatement s;
+
+        String url = "jdbc:://Agustin-PC:1433;databaseName=Negocio";
+        String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        String user = "usuario_java";
+        String clave = "123";
+
+        try {
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, user, clave);
+
+            s = con.prepareStatement("insert into Venta values (?,?,?,?,?,?,?,?)");
+
+            s.setString(1, codpro);
+            s.setString(2, prod);
+            s.setString(3, cant);
+
+            s.setString(4, car);
             Fecha a = new Fecha();
-           a.FechaMovimiento();
-           
+            a.FechaMovimiento();
 
-           
-           s.setString(5,a.getDd());
-           s.setString(6,a.getMm());
-           s.setString(7,a.getAa());
-           s.setString(8, elid);
-           s.executeUpdate();
-           
+            s.setString(5, a.getDd());
+            s.setString(6, a.getMm());
+            s.setString(7, a.getAa());
+            s.setString(8, elid);
+            s.executeUpdate();
 
-           
-           
-       } 
-        catch(ClassNotFoundException e){
-             JOptionPane.showMessageDialog(null, e);}
-        catch(SQLException e){
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e);
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
- 
-       
-   } 
-       
-    
+    }
 }

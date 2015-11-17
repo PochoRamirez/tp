@@ -246,7 +246,7 @@ public class AltaCliente extends javax.swing.JFrame {
 
         Cliente a = new Cliente();
         a.cliente(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDNI.getText(), jTextFieldTelefono.getText(), jTextFieldDD.getText(), jTextFieldMM.getText(), jTextFieldAAAA.getText(), jTextFieldMail.getText(), jTextFieldDomicilio.getText());
-        ClienteDAO c= new ClienteDAO();
+        ClienteDAO c = new ClienteDAO();
         c.guardaCliente(a);
         jTextFieldNombre.setText("");
         jTextFieldApellido.setText("");

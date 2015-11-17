@@ -11,21 +11,18 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.tpfinal.modelo.Empleado;
 
-
 public class ModificarEmpleado extends javax.swing.JFrame {
 
-              Connection con; 
-        PreparedStatement s; 
-        ResultSet r;  
-        ResultSetMetaData rsm;
-        DefaultTableModel dtm;  
-    
-    
+    Connection con;
+    PreparedStatement s;
+    ResultSet r;
+    ResultSetMetaData rsm;
+    DefaultTableModel dtm;
+
     public ModificarEmpleado() {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -244,11 +241,10 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        
-     Empleado a = new Empleado(true);
-     a.ModificarEmpleado(jTextFielddni.getText(), jTextFieldtelefono.getText(), jTextFielddireccion.getText(),jTextFieldnombre.getText(), jTextFielddd.getText(), jTextFieldmm.getText(), jTextFieldaaaa.getText());
-        
-        
+        Empleado a = new Empleado(true);
+        a.ModificarEmpleado(jTextFielddni.getText(), jTextFieldtelefono.getText(), jTextFielddireccion.getText(), jTextFieldnombre.getText(), jTextFielddd.getText(), jTextFieldmm.getText(), jTextFieldaaaa.getText());
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFielddniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielddniActionPerformed
@@ -261,15 +257,15 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-     Empleado o = new Empleado(true);
-     o.CargarEmpleado(jTextFielddni.getText());
+        Empleado o = new Empleado(true);
+        o.CargarEmpleado(jTextFielddni.getText());
 
-                     this.jTextFieldnombre.setText(o.getNombre());
-                    this.jTextFieldtelefono.setText(o.getTelefono());
-                    this.jTextFielddireccion.setText(o.getDomicilio());
-                    this.jTextFielddd.setText(o.getDiaNacimiento());
-                    this.jTextFieldmm.setText(o.getMesNacimiento());
-                    this.jTextFieldaaaa.setText(o.getAñoNacimiento());
+        this.jTextFieldnombre.setText(o.getNombre());
+        this.jTextFieldtelefono.setText(o.getTelefono());
+        this.jTextFielddireccion.setText(o.getDomicilio());
+        this.jTextFielddd.setText(o.getDiaNacimiento());
+        this.jTextFieldmm.setText(o.getMesNacimiento());
+        this.jTextFieldaaaa.setText(o.getAñoNacimiento());
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed

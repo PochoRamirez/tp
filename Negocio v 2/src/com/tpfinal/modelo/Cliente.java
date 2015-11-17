@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.tpfinal.modelo;
 
 import java.sql.Connection;
@@ -25,7 +20,7 @@ import javax.swing.JOptionPane;
  * @author Desi
  */
 public class Cliente {
-    
+
     int IdCliente;
     String DNI;
     String Nombre;
@@ -112,7 +107,7 @@ public class Cliente {
     public void setMail(String Mail) {
         this.Mail = Mail;
     }
-    
+
     public void cliente(String Nombre, String Apellido, String DNI, String Telefono, String Domicilio, String DiaNacimiento, String MesNacimiento, String AñoNacimiento, String Mail) {
         this.DNI = DNI;
         this.Nombre = Nombre;
@@ -125,8 +120,7 @@ public class Cliente {
         this.Mail = Mail;
         Date d = new Date();
         this.fechaAlta = d;
-        
+
     }
 
-    
 }

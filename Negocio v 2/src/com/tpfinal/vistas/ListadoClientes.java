@@ -9,22 +9,23 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Agustin
  */
 public class ListadoClientes extends javax.swing.JFrame {
 
-        Connection con; 
-        PreparedStatement s; 
-        ResultSet r;  
-        ResultSetMetaData rsm;
-        DefaultTableModel dtm;
-        
-        public ListadoClientes(){
-            
-                initComponents();                 
-}           
+    Connection con;
+    PreparedStatement s;
+    ResultSet r;
+    ResultSetMetaData rsm;
+    DefaultTableModel dtm;
+
+    public ListadoClientes() {
+
+        initComponents();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -89,7 +90,7 @@ public class ListadoClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    this.setVisible(false); 
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -101,7 +102,6 @@ public class ListadoClientes extends javax.swing.JFrame {
         ListadoDeTodosLosClientesFiltrados a = new ListadoDeTodosLosClientesFiltrados();
         a.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
-
 
     public static void main(String args[]) {
 

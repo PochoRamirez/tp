@@ -1,11 +1,11 @@
 package com.tpfinal.vistas;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import com.tpfinal.modelo.Empleado;
-
 
 public class AltaEmpleado extends javax.swing.JFrame {
 
@@ -230,7 +230,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-    this.setVisible(false);    
+        this.setVisible(false);
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
@@ -242,23 +242,19 @@ public class AltaEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldApellidoActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
- 
-                
-   
-     
+
         Empleado a = new Empleado(true);
         a.AltaEmpleado(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDNI.getText(), jTextFieldTelefono.getText(), jTextFieldDD.getText(), jTextFieldMM.getText(), jTextFieldAAAA.getText(), jTextFieldMail.getText(), jTextFieldDomicilio.getText());
         jTextFieldNombre.setText("");
         jTextFieldApellido.setText("");
         jTextFieldDNI.setText("");
-        jTextFieldTelefono.setText("");       
+        jTextFieldTelefono.setText("");
         jTextFieldDD.setText("");
         jTextFieldMM.setText("");
         jTextFieldAAAA.setText("");
         jTextFieldMail.setText("");
         jTextFieldDomicilio.setText("");
-           
-   
+
 
     }//GEN-LAST:event_GuardarActionPerformed
 

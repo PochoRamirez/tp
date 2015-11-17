@@ -1,6 +1,5 @@
 package com.tpfinal.vistas;
 
-
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,14 +9,15 @@ import com.tpfinal.modelo.Venta;
 
 public class AltaVenta extends javax.swing.JFrame {
 
-              Connection con; 
-        PreparedStatement s; 
-        ResultSet r;  
-        ResultSetMetaData rsm;
-        DefaultTableModel dtm;   
-        int  total;
-        
+    Connection con;
+    PreparedStatement s;
+    ResultSet r;
+    ResultSetMetaData rsm;
+    DefaultTableModel dtm;
+    int total;
+
     Fecha a = new Fecha();
+
     public AltaVenta() {
         initComponents();
     }
@@ -190,52 +190,45 @@ public class AltaVenta extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        
-                  int cantidad = 0;
-            String x = jTextField2.getText();
-            int xx = Integer.parseInt(x);
-            
-            while (cantidad < xx){  
-                cantidad=cantidad+1;
-              try{
+        int cantidad = 0;
+        String x = jTextField2.getText();
+        int xx = Integer.parseInt(x);
 
-                  
-                  
-            String url="jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
+        while (cantidad < xx) {
+            cantidad = cantidad + 1;
+            try {
 
-            String user="usuario_java";
-            String clave="123";
+                String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
 
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con=DriverManager.getConnection(url,user,clave);
+                String user = "usuario_java";
+                String clave = "123";
 
-            s=con.prepareStatement("select id_producto, Nombre, Precio, Stock from Producto WHERE id_producto = " + jTextField1.getText() + "");
-            r=s.executeQuery();
-            rsm=r.getMetaData();
-            ArrayList<Object[]> data= new ArrayList<> ();
-            while (r.next()) {
-                total=total+ Integer.parseInt(r.getString(3)); //aca
-                Object[] rows = new Object [rsm.getColumnCount()];
-                for (int i = 0; i < rows.length; i++){
-                    rows[i]=r.getObject(i+1);
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                con = DriverManager.getConnection(url, user, clave);
+
+                s = con.prepareStatement("select id_producto, Nombre, Precio, Stock from Producto WHERE id_producto = " + jTextField1.getText() + "");
+                r = s.executeQuery();
+                rsm = r.getMetaData();
+                ArrayList<Object[]> data = new ArrayList<>();
+                while (r.next()) {
+                    total = total + Integer.parseInt(r.getString(3)); //aca
+                    Object[] rows = new Object[rsm.getColumnCount()];
+                    for (int i = 0; i < rows.length; i++) {
+                        rows[i] = r.getObject(i + 1);
+                    }
+                    data.add(rows);
                 }
-                data.add(rows);
+                dtm = (DefaultTableModel) this.JTB_TablaDetalle3.getModel();
+                for (int i = 0; i < data.size(); i++) {
+                    dtm.addRow(data.get(i));
+                }
+            } catch (ClassNotFoundException | SQLException e) {
+                JOptionPane.showMessageDialog(rootPane, e.getMessage());
             }
-            dtm=(DefaultTableModel)this.JTB_TablaDetalle3.getModel();
-            for (int i = 0; i < data.size(); i++) {
-                dtm.addRow(data.get(i));
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+
         }
-        
-        }
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -245,154 +238,134 @@ public class AltaVenta extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-                   String elid = null;
-               /// Seleccina el id   
-         try{
+        String elid = null;
+        /// Seleccina el id   
+        try {
 
-            String url="jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
+            String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
 
-            String user="usuario_java";
-            String clave="123";
+            String user = "usuario_java";
+            String clave = "123";
 
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con=DriverManager.getConnection(url,user,clave);
+            con = DriverManager.getConnection(url, user, clave);
 
-            s=con.prepareStatement("select id from id");
-            r=s.executeQuery();
-            rsm=r.getMetaData();
-            ArrayList<Object[]> data= new ArrayList<> ();
+            s = con.prepareStatement("select id from id");
+            r = s.executeQuery();
+            rsm = r.getMetaData();
+            ArrayList<Object[]> data = new ArrayList<>();
             while (r.next()) {
-                elid=(r.getString(1));
-                
-                Object[] rows = new Object [rsm.getColumnCount()];
-                for (int i = 0; i < rows.length; i++){
-                    rows[i]=r.getObject(i+1);
+                elid = (r.getString(1));
+
+                Object[] rows = new Object[rsm.getColumnCount()];
+                for (int i = 0; i < rows.length; i++) {
+                    rows[i] = r.getObject(i + 1);
                 }
                 data.add(rows);
             }
 
-            
         } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-        
 
-        
-        Connection con=null;                         
-         PreparedStatement s;
-       
-        String url="jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
-        String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String user="usuario_java";
-        String clave="123";
-                
-        
-        for(int i=0;i<JTB_TablaDetalle3.getRowCount();i++){
-  
-            String elstock ="";
-            int elstock2=0;
-                 
-        String codpro=JTB_TablaDetalle3.getValueAt(i,0).toString();
-        String prod=JTB_TablaDetalle3.getValueAt(i,1).toString();
-        String cant=JTB_TablaDetalle3.getValueAt(i,2).toString();
-        String car=jTextFieldcliente.getText();
+        Connection con = null;
+        PreparedStatement s;
 
-        
-        
-         try{
+        String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
+        String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        String user = "usuario_java";
+        String clave = "123";
 
+        for (int i = 0; i < JTB_TablaDetalle3.getRowCount(); i++) {
 
+            String elstock = "";
+            int elstock2 = 0;
 
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con=DriverManager.getConnection(url,user,clave);
+            String codpro = JTB_TablaDetalle3.getValueAt(i, 0).toString();
+            String prod = JTB_TablaDetalle3.getValueAt(i, 1).toString();
+            String cant = JTB_TablaDetalle3.getValueAt(i, 2).toString();
+            String car = jTextFieldcliente.getText();
 
-            s=con.prepareStatement("select Stock from Producto WHERE id_producto = " + codpro + "");
-            r=s.executeQuery();
-            rsm=r.getMetaData();
-            ArrayList<Object[]> data= new ArrayList<> ();
-            while (r.next()) {
+            try {
 
-                Object[] rows = new Object [rsm.getColumnCount()];
-                for (int m = 0; m < rows.length; m++){
-                    rows[m]=r.getObject(m+1);
-                    elstock=(r.getString(1));
-                    elstock2 = Integer.parseInt(elstock);
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                con = DriverManager.getConnection(url, user, clave);
+
+                s = con.prepareStatement("select Stock from Producto WHERE id_producto = " + codpro + "");
+                r = s.executeQuery();
+                rsm = r.getMetaData();
+                ArrayList<Object[]> data = new ArrayList<>();
+                while (r.next()) {
+
+                    Object[] rows = new Object[rsm.getColumnCount()];
+                    for (int m = 0; m < rows.length; m++) {
+                        rows[m] = r.getObject(m + 1);
+                        elstock = (r.getString(1));
+                        elstock2 = Integer.parseInt(elstock);
+                    }
+                    data.add(rows);
+
                 }
-                data.add(rows);
-
-
+            } catch (ClassNotFoundException | SQLException e) {
+                JOptionPane.showMessageDialog(rootPane, e.getMessage());
             }
-        } catch (ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        }
-        
-        
-        
-        if(elstock2>=1) {{   
 
-        try{
+            if (elstock2 >= 1) {
+                {
+
+                    try {
+                        Class.forName(driver);
+                        con = DriverManager.getConnection(url, user, clave);
+                        s = con.prepareStatement("UPDATE Producto SET Stock=(?) Where id_producto = " + codpro + "");
+                        elstock2 = elstock2 - 1;
+                        elstock = Integer.toString(elstock2);
+                        s.setString(1, elstock);
+
+                        s.executeUpdate();
+
+                    } catch (ClassNotFoundException e) {
+                        JOptionPane.showMessageDialog(null, e);
+                    } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+
+                    Venta v = new Venta();
+                    v.Venta(codpro, prod, cant, car, elid);
+
+                }
+            }
+
+/// refresca el id
+        }
+
+        try {
             Class.forName(driver);
-            con=DriverManager.getConnection(url,user,clave);
-            s=con.prepareStatement("UPDATE Producto SET Stock=(?) Where id_producto = " + codpro +"");
-            elstock2=elstock2-1;
-            elstock=Integer.toString(elstock2);
-            s.setString(1,elstock );
+            con = DriverManager.getConnection(url, user, clave);
+            s = con.prepareStatement("UPDATE id SET id =(?)");
+
+            int elidn;
+            elidn = Integer.parseInt(elid);
+            elidn = elidn + 1;
+            elid = Integer.toString(elidn);
+            s.setString(1, elid);
 
             s.executeUpdate();
 
+            JOptionPane.showMessageDialog(null, "Venta Almacenada ");
 
-        }
-        catch(ClassNotFoundException e){
-            JOptionPane.showMessageDialog(null, e);}
-        catch(SQLException e){
+        } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, e);
-        }        
-
-        
-    Venta v = new Venta();
-        v.Venta(codpro, prod, cant, car, elid);
-
-}}
-    
-        
-/// refresca el id
-     
-        }
-        
-         try{
-           Class.forName(driver);
-           con=DriverManager.getConnection(url,user,clave);                  
-           s=con.prepareStatement("UPDATE id SET id =(?)");
-     
-           int elidn;
-           elidn = Integer.parseInt(elid);
-           elidn=elidn+1;
-           elid = Integer.toString(elidn);
-           s.setString(1,elid);
-
-     
-           s.executeUpdate();
-           
-           JOptionPane.showMessageDialog(null,"Venta Almacenada ");
-           
-           
-       } 
-        catch(ClassNotFoundException e){
-             JOptionPane.showMessageDialog(null, e);}
-        catch(SQLException e){
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
 
-        
-        
-        
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void Cancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancelar2ActionPerformed
- this.setVisible(false);         // TODO add your handling code here:
+        this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_Cancelar2ActionPerformed
-      
+
     /**
      * @param args the command line arguments
      */

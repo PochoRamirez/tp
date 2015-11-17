@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.tpfinal.modelo;
 
 import java.sql.Connection;
@@ -20,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Desi
  */
 public class Articulo {
+
     int IDarticulo;
     String Nombre;
     String Marca;
@@ -34,9 +30,6 @@ public class Articulo {
 
     public Articulo() {
     }
-    
-    
-
 
     public int getIDarticulo() {
         return IDarticulo;
@@ -139,7 +132,5 @@ public class Articulo {
         this.MesAlta = MesAlta;
         this.AñoAlta = AñoAlta;
     }
-    
-    
-    
+
 }

@@ -9,22 +9,21 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-/**
 
 /**
+ *
+ * /**
  *
  * @author Agustin
  */
 public class ListadoDeVentasPorCliente extends javax.swing.JFrame {
 
-                 Connection con; 
-        PreparedStatement s; 
-        ResultSet r;  
-        ResultSetMetaData rsm;
-        DefaultTableModel dtm;
-    
-    
-    
+    Connection con;
+    PreparedStatement s;
+    ResultSet r;
+    ResultSetMetaData rsm;
+    DefaultTableModel dtm;
+
     public ListadoDeVentasPorCliente() {
         initComponents();
     }
@@ -125,30 +124,30 @@ public class ListadoDeVentasPorCliente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        try{
+        try {
             String elid;
-            String url="jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
+            String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
 
-            String user="usuario_java";
-            String clave="123";
+            String user = "usuario_java";
+            String clave = "123";
 
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con=DriverManager.getConnection(url,user,clave);
+            con = DriverManager.getConnection(url, user, clave);
 
-            s=con.prepareStatement("select id_venta, DNI, Nombre, Precio, Dia, Mes, Año from Venta WHERE DNI = " + jTextField1.getText() + "");
-            r=s.executeQuery();
-            rsm=r.getMetaData();
-            ArrayList<Object[]> data= new ArrayList<> ();
+            s = con.prepareStatement("select id_venta, DNI, Nombre, Precio, Dia, Mes, Año from Venta WHERE DNI = " + jTextField1.getText() + "");
+            r = s.executeQuery();
+            rsm = r.getMetaData();
+            ArrayList<Object[]> data = new ArrayList<>();
             while (r.next()) {
 
-                Object[] rows = new Object [rsm.getColumnCount()];
-                for (int i = 0; i < rows.length; i++){
-                    rows[i]=r.getObject(i+1);
+                Object[] rows = new Object[rsm.getColumnCount()];
+                for (int i = 0; i < rows.length; i++) {
+                    rows[i] = r.getObject(i + 1);
 
                 }
                 data.add(rows);
             }
-            dtm=(DefaultTableModel)this.jTable1.getModel();
+            dtm = (DefaultTableModel) this.jTable1.getModel();
             for (int i = 0; i < data.size(); i++) {
                 dtm.addRow(data.get(i));
             }

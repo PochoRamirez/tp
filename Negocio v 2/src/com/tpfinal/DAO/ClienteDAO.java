@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.tpfinal.DAO;
 
 import com.tpfinal.modelo.Cliente;
@@ -25,26 +20,22 @@ import org.hibernate.Transaction;
  * @author Desi
  */
 public class ClienteDAO {
-    
+
     private Session sesion;
     private Transaction tx;
 
-    public String guardaCliente(Cliente cliente) throws HibernateException
-    {
+    public String guardaCliente(Cliente cliente) throws HibernateException {
         String NumCliente = "0";
 
-        try
-        {
+        try {
             this.iniciaOperacion();
-            NumCliente= (String) sesion.save(cliente);
+            NumCliente = (String) sesion.save(cliente);
             tx.commit();
-            
-        } catch (HibernateException he)
-        {
+
+        } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally
-        {
+        } finally {
             sesion.flush();
             sesion.close();
         }
@@ -52,104 +43,83 @@ public class ClienteDAO {
         return NumCliente;
     }
 
-    public void actualizaCliente(Cliente cliente) throws HibernateException
-    {
-        try
-        {
+    public void actualizaCliente(Cliente cliente) throws HibernateException {
+        try {
             iniciaOperacion();
             sesion.update(cliente);
             tx.commit();
-        } catch (HibernateException he)
-        {
+        } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally
-        {
+        } finally {
             sesion.close();
         }
     }
 
-    public void eliminaCliente(Cliente cliente) throws HibernateException, IllegalStateException
-    {
-        try
-        {
+    public void eliminaCliente(Cliente cliente) throws HibernateException, IllegalStateException {
+        try {
             iniciaOperacion();
             sesion.delete(cliente);
             tx.commit();
-        } catch (HibernateException he)
-        {
+        } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally
-        {
+        } finally {
             sesion.close();
         }
     }
 
-    public Cliente obtenCliente(String NumCliente) throws HibernateException
-    {
+    public Cliente obtenCliente(String NumCliente) throws HibernateException {
         Cliente cliente = null;
-        try
-        {
-            iniciaOperacion(); 
-            
+        try {
+            iniciaOperacion();
+
             cliente = (Cliente) sesion.get(Cliente.class, NumCliente);
-        } finally
-        {
+        } finally {
             sesion.close();
         }
 
         return cliente;
     }
-    
-    public Cliente datosCliente(String NumCliente) throws HibernateException
-    {
+
+    public Cliente datosCliente(String NumCliente) throws HibernateException {
         Cliente cliente = null;
-        try
-        {
-            iniciaOperacion(); 
-            
+        try {
+            iniciaOperacion();
+
             cliente = (Cliente) sesion.get(Cliente.class, NumCliente);
-        } finally
-        {
+        } finally {
             sesion.close();
         }
 
         return cliente;
     }
-    
-    
+
     @SuppressWarnings("unchecked")
-    public List<Cliente> obtenListaCliente() throws HibernateException
-    {
+    public List<Cliente> obtenListaCliente() throws HibernateException {
         List<Cliente> listaCliente = null;
 
-        try
-        {
+        try {
             iniciaOperacion();
             listaCliente = sesion.createQuery("from Cliente").list();
-            
-        } finally
-        {
+
+        } finally {
             sesion.close();
         }
 
         return listaCliente;
     }
 
-    private void iniciaOperacion() throws HibernateException
-    {
+    private void iniciaOperacion() throws HibernateException {
         sesion = HibernateUtil.getSessionFactory().openSession();
         tx = (Transaction) sesion.beginTransaction();
     }
 
-    private void manejaExcepcion(HibernateException he) throws HibernateException, IllegalStateException
-    {
+    private void manejaExcepcion(HibernateException he) throws HibernateException, IllegalStateException {
         tx.rollback();
         throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
-    } 
+    }
 
-    
     public void BorrarCliente(String dni) {
 
         Connection con = null;
@@ -248,9 +218,6 @@ public class ClienteDAO {
             }
         } catch (ClassNotFoundException | SQLException e) {
 
-        }
-
+       }
     }
-
-    
 }
