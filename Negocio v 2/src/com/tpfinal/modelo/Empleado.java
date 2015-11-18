@@ -32,11 +32,10 @@ public class Empleado {
     boolean Actividad;
     boolean Administrador;
     String Contraseña;
+    String DNI;
 
     public Empleado() {
     }
-    
-    
 
     public boolean isAdministrador() {
         return Administrador;
@@ -53,17 +52,13 @@ public class Empleado {
     public void setContraseña(String Contraseña) {
         this.Contraseña = Contraseña;
     }
-    
-
-   
-    
 
     public Empleado(boolean Actividad) {
         this.Actividad = Actividad;
+        this.Administrador = false;
+        this.Contraseña = "";
+    
     }
-
-  
-
     
     public int getIDempleado() {
         return IDempleado;
@@ -146,20 +141,15 @@ public class Empleado {
         this.Actividad = Actividad;
     }
 
-    public void Empleado(int IDempleado, String Nombre, String Apellido, String Domicilio, String Mail, String DiaNacimiento, String MesNacimiento, String AñoNacimiento, String Telefono, boolean Actividad, boolean Administrador, String Contraseña) {
-        this.IDempleado = IDempleado;
+    public void Empleado(String Nombre, String Apellido, String Domicilio, String Mail, String DNI, String DiaNacimiento, String MesNacimiento, String AñoNacimiento, String Telefono) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Domicilio = Domicilio;
+        this.DNI = DNI;
         this.Mail = Mail;
         this.DiaNacimiento = DiaNacimiento;
         this.MesNacimiento = MesNacimiento;
         this.AñoNacimiento = AñoNacimiento;
         this.Telefono = Telefono;
-        this.Actividad = Actividad;
-        this.Administrador = Administrador;
-        this.Contraseña = Contraseña;
-    }
-    
-   
+        }  
 }

@@ -149,47 +149,6 @@ public class ArticuloDAO {
         }
     }
 
-    public void CargarArticulo(String id) {
-
-        try {
-
-            Connection con;
-            PreparedStatement s;
-            ResultSet r;
-            ResultSetMetaData rsm;
-            DefaultTableModel dtm;
-
-            String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
-            String user = "usuario_java";
-            String clave = "123";
-
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection(url, user, clave);
-
-            s = con.prepareStatement("select Nombre, Marca, Precio, Stock, Descripcion, Observaciones, Actividad from Producto WHERE id_producto = " + id + "");
-            r = s.executeQuery();
-            rsm = r.getMetaData();
-            ArrayList<Object[]> data = new ArrayList<>();
-            while (r.next()) {
-
-                Object[] rows = new Object[rsm.getColumnCount()];
-                for (int i = 0; i < rows.length; i++) {
-                    rows[i] = r.getObject(i + 1);
-
-                    this.Nombre = (r.getString(1));
-
-                    this.Marca = (r.getString(2));
-
-              //      this.Precio=(r.getString(3));          // pasar de String a flotante                           
-            //       this.Stock=(r.getint(4));        //   pasar de String a int
-                }
-                data.add(rows);
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-
-        }
-    }
-
     public void BorrarArticulo(String id) {
 
         Connection con = null;

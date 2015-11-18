@@ -244,7 +244,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
 
         Empleado a = new Empleado(true);
-        a.AltaEmpleado(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDNI.getText(), jTextFieldTelefono.getText(), jTextFieldDD.getText(), jTextFieldMM.getText(), jTextFieldAAAA.getText(), jTextFieldMail.getText(), jTextFieldDomicilio.getText());
+        a.Empleado(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDomicilio.getText(), jTextFieldMail.getText(), jTextFieldDNI.getText(), jTextFieldTelefono.getText(), jTextFieldDD.getText(), jTextFieldMM.getText(), jTextFieldAAAA.getText() );
         jTextFieldNombre.setText("");
         jTextFieldApellido.setText("");
         jTextFieldDNI.setText("");

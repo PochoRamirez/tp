@@ -24,7 +24,7 @@ public class EmpleadoDAO {
     private Session sesion;
     private Transaction tx;
 
-    public String guardaEmpleado(Empleado empleado) throws HibernateException {
+    public String guardarEmpleado(Empleado empleado) throws HibernateException {
         String NumEmpleado = "0";
 
         try {

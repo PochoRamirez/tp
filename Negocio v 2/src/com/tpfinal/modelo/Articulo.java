@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,8 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Desi
  */
 public class Articulo {
-
-    int IDarticulo;
+    int idArticulo;
     String Nombre;
     String Marca;
     float Precio;
@@ -24,15 +24,13 @@ public class Articulo {
     String Observaciones;
     String Descripcion;
     String Actividad;
-    String DiaAlta;
-    String MesAlta;
-    String AñoAlta;
+    Date fechaAlta;
 
     public Articulo() {
     }
 
     public int getIDarticulo() {
-        return IDarticulo;
+        return idArticulo;
     }
 
     public String getNombre() {
@@ -63,20 +61,8 @@ public class Articulo {
         return Actividad;
     }
 
-    public String getDiaAlta() {
-        return DiaAlta;
-    }
-
-    public String getMesAlta() {
-        return MesAlta;
-    }
-
-    public String getAñoAlta() {
-        return AñoAlta;
-    }
-
     public void setIDarticulo(int IDarticulo) {
-        this.IDarticulo = IDarticulo;
+        this.idArticulo = IDarticulo;
     }
 
     public void setNombre(String Nombre) {
@@ -107,30 +93,15 @@ public class Articulo {
         this.Actividad = Actividad;
     }
 
-    public void setDiaAlta(String DiaAlta) {
-        this.DiaAlta = DiaAlta;
-    }
-
-    public void setMesAlta(String MesAlta) {
-        this.MesAlta = MesAlta;
-    }
-
-    public void setAñoAlta(String AñoAlta) {
-        this.AñoAlta = AñoAlta;
-    }
-
-    public void Articulo(int IDarticulo, String Nombre, String Marca, float Precio, int Stock, String Observaciones, String Descripcion, String Actividad, String DiaAlta, String MesAlta, String AñoAlta) {
-        this.IDarticulo = IDarticulo;
+    public void Articulo( String Nombre, String Marca, String Precio, String Stock, String Observaciones, String Descripcion, String Actividad) {
         this.Nombre = Nombre;
         this.Marca = Marca;
-        this.Precio = Precio;
-        this.Stock = Stock;
+        this.Precio = (float)Integer.parseInt(Precio);
+        this.Stock = Integer.parseInt(Stock);
         this.Observaciones = Observaciones;
         this.Descripcion = Descripcion;
         this.Actividad = Actividad;
-        this.DiaAlta = DiaAlta;
-        this.MesAlta = MesAlta;
-        this.AñoAlta = AñoAlta;
+        this.fechaAlta = new Date();
     }
 
 }
