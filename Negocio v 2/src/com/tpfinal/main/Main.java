@@ -17,7 +17,7 @@ public class Main {
 //        System.out.println("HOLA MUNDOOOOO---------Setting up Hibernate --------");
 //        Configuration cfg = new Configuration();
 //        cfg.configure("com.tpfinal.config/hibernate.cfg.xml");
-//
+//Cambios-----
 //        System.out.println("Building sessions.........");
 //        sessions = cfg.buildSessionFactory();
 //
