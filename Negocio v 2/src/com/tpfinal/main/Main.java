@@ -14,10 +14,9 @@ import org.hibernate.cfg.Configuration;
 public class Main {
 
     public static void main(String[] args) {
-//        System.out.println("HOLA MUNDOOOOO---------Setting up Hibernate --------");
+//        System.out.println("---------Setting up Hibernate --------");
 //        Configuration cfg = new Configuration();
 //        cfg.configure("com.tpfinal.config/hibernate.cfg.xml");
-//Cambios-----
 //        System.out.println("Building sessions.........");
 //        sessions = cfg.buildSessionFactory();
 //
