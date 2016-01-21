@@ -1,6 +1,6 @@
 package com.tpfinal.vistas;
 
-import com.tpfinal.vistas.Login;
+import org.hibernate.cfg.Configuration;
 
 /**
  *

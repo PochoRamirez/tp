@@ -4,7 +4,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 
-public class HibernateUtil {
+public class HibernateUtil {    
 
     private static final SessionFactory sessionFactory;
     private static final Configuration cfg;

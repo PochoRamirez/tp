@@ -1,19 +1,7 @@
 package com.tpfinal.modelo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -118,9 +106,20 @@ public class Cliente {
         this.MesNacimiento = MesNacimiento;
         this.AñoNacimiento = AñoNacimiento;
         this.Mail = Mail;
-        Date d = new Date();
-        this.fechaAlta = d;
+        //this.fechaAlta = Calendar.getInstance().getTime();
 
+    }
+
+    public void BorrarCliente(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void ModificarCiente(String text, String text0, String text1, String text2, String text3, String text4, String text5) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void CargarCliente(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

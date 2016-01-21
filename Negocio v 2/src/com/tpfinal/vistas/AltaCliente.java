@@ -245,7 +245,7 @@ public class AltaCliente extends javax.swing.JFrame {
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
 
         Cliente a = new Cliente();
-        a.cliente(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDNI.getText(), jTextFieldTelefono.getText(), jTextFieldDD.getText(), jTextFieldMM.getText(), jTextFieldAAAA.getText(), jTextFieldMail.getText(), jTextFieldDomicilio.getText());
+        a.cliente(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDNI.getText(), jTextFieldTelefono.getText(), jTextFieldDomicilio.getText(), jTextFieldDD.getText(), jTextFieldMM.getText(), jTextFieldAAAA.getText(), jTextFieldMail.getText());
         ClienteDAO c = new ClienteDAO();
         c.guardaCliente(a);
         jTextFieldNombre.setText("");

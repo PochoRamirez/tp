@@ -13,7 +13,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -24,13 +26,17 @@ public class ClienteDAO {
     private Session sesion;
     private Transaction tx;
 
-    public String guardaCliente(Cliente cliente) throws HibernateException {
-        String NumCliente = "0";
+    public void guardaCliente(Cliente cliente) throws HibernateException {
+        //String NumCliente = "0";
 
         try {
-            this.iniciaOperacion();
-            NumCliente = (String) sesion.save(cliente);
-            tx.commit();
+            //this.iniciaOperacion();
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            //NumCliente = (String) sesion.save(cliente);
+            session.save(cliente);
+            session.getTransaction().commit();
+            //tx.commit();
 
         } catch (HibernateException he) {
             manejaExcepcion(he);
@@ -40,7 +46,7 @@ public class ClienteDAO {
             sesion.close();
         }
 
-        return NumCliente;
+        //return NumCliente;
     }
 
     public void actualizaCliente(Cliente cliente) throws HibernateException {
@@ -111,7 +117,8 @@ public class ClienteDAO {
     }
 
     private void iniciaOperacion() throws HibernateException {
-        sesion = HibernateUtil.getSessionFactory().openSession();
+        //
+        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         tx = (Transaction) sesion.beginTransaction();
     }
 
