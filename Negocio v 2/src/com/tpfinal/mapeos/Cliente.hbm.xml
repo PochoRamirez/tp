@@ -13,7 +13,7 @@
         <property name="MesNacimiento" type="string" column="mesNacimiento"/>
         <property name="AñoNacimiento" type="string" column="añoNacimiento"/>
         <property name="Mail" type="string" column="mail"/>
-        <property name="fechaAlta" type="date" column="fechaAlta"/>
+        <!--<property name="fechaAlta" type="date" column="fechaAlta"/>-->
        
     </class>
 </hibernate-mapping>
