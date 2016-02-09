@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
     <!-- parametros para la conexion a la base de datos -->
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="connection.url">jdbc:mysql://localhost:3306/Negocio</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/negocio</property>
     <property name="connection.username">root</property>
-    <property name="connection.password"/>
+    <property name="connection.password">root</property>
     <!-- Configuracion del pool interno -->
     <property name="connection.pool_size">1</property>
     <!-- Dialecto de la base de datos -->
@@ -16,9 +16,9 @@
     <property name="format_sql">true</property>
     <property name="hbm2ddl.auto">create-drop</property>
     <!-- Archivos de mapeo -->
-    <mapping class="" file="" jar="" package="" resource="com.tpfinal.mapeos/Articulo.hbm.xml"/>
-    <mapping class="" file="" jar="" package="" resource="com.tpfinal.mapeos/Cliente.hbm.xml"/>
-    <mapping class="" file="" jar="" package="" resource="com.tpfinal.mapeos/Empleado.hbm.xml"/>
-    <mapping class="" file="" jar="" package="" resource="com.tpfinal.mapeos/Venta.hbm.xml"/>
+    <mapping resource="com/tpfinal/mapeos/Articulo.hbm.xml"/>
+    <mapping resource="com/tpfinal/mapeos/Cliente.hbm.xml"/>
+    <mapping resource="com/tpfinal/mapeos/Empleado.hbm.xml"/>
+    <mapping resource="com/tpfinal/mapeos/Venta.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,40 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.tpfinal.modelo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import com.tpfinal.DAO.HibernateUtil;
+import java.io.Serializable;
+import java.util.Date;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 /**
  *
  * @author Desi
  */
-public class Empleado {
-    int IDempleado;
-    String Nombre;
-    String Apellido;
-    String Domicilio;
-    String Mail;
-    String DiaNacimiento;
-    String MesNacimiento;
-    String AñoNacimiento;
-    String Telefono;
-    boolean Actividad;
-    boolean Administrador;
-    String Contraseña;
-    String DNI;
+public class Empleado implements Serializable {
 
+    private int idEmpleado;
+    private String Nombre;
+    private String Apellido;
+    private String Domicilio;
+    private String Mail;
+    private Date fechaNacimiento;
+    private int Telefono;
+    private boolean Actividad;
+    private boolean Administrador;
+    private String Contraseña;
+    private int DNI;
+
+   
+    
     public Empleado() {
+        
     }
 
     public boolean isAdministrador() {
@@ -43,6 +37,22 @@ public class Empleado {
 
     public void setAdministrador(boolean Administrador) {
         this.Administrador = Administrador;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public void setDNI(int DNI) {
+        this.DNI = DNI;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public int getDNI() {
+        return DNI;
     }
 
     public String getContraseña() {
@@ -57,26 +67,25 @@ public class Empleado {
         this.Actividad = Actividad;
         this.Administrador = false;
         this.Contraseña = "";
-    
+
     }
-    
-    public int getIDempleado() {
-        return IDempleado;
+
+    public int getIdEmpleado() {
+        return idEmpleado;
     }
 
     public String getNombre() {
         return Nombre;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return Telefono;
     }
 
-    public void setTelefono(String Telefono) {
+    public void setTelefono(int Telefono) {
         this.Telefono = Telefono;
     }
 
-    
     public String getApellido() {
         return Apellido;
     }
@@ -89,20 +98,8 @@ public class Empleado {
         return Mail;
     }
 
-    public String getDiaNacimiento() {
-        return DiaNacimiento;
-    }
-
-    public String getMesNacimiento() {
-        return MesNacimiento;
-    }
-
-    public String getAñoNacimiento() {
-        return AñoNacimiento;
-    }
-
-    public void setIDempleado(int IDempleado) {
-        this.IDempleado = IDempleado;
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
     public void setNombre(String Nombre) {
@@ -121,18 +118,6 @@ public class Empleado {
         this.Mail = Mail;
     }
 
-    public void setDiaNacimiento(String DiaNacimiento) {
-        this.DiaNacimiento = DiaNacimiento;
-    }
-
-    public void setMesNacimiento(String MesNacimiento) {
-        this.MesNacimiento = MesNacimiento;
-    }
-
-    public void setAñoNacimiento(String AñoNacimiento) {
-        this.AñoNacimiento = AñoNacimiento;
-    }
-
     public boolean isActividad() {
         return Actividad;
     }
@@ -141,17 +126,16 @@ public class Empleado {
         this.Actividad = Actividad;
     }
 
-    public void Empleado(String Nombre, String Apellido, String Domicilio, String Mail, String DNI, String DiaNacimiento, String MesNacimiento, String AñoNacimiento, String Telefono) {
+    public void Empleado(String Nombre, String Apellido, String Domicilio, String Mail, int DNI, Date fechaNacimiento, int Telefono) {
+        
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Domicilio = Domicilio;
         this.DNI = DNI;
         this.Mail = Mail;
-        this.DiaNacimiento = DiaNacimiento;
-        this.MesNacimiento = MesNacimiento;
-        this.AñoNacimiento = AñoNacimiento;
+        this.fechaNacimiento = fechaNacimiento;
         this.Telefono = Telefono;
-        }  
+    }
 
     public void BorrarEmpleado(String text) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -163,5 +147,22 @@ public class Empleado {
 
     public void CargarEmpleado(String text) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public void guardarEmpleado(Empleado empleado) throws HibernateException {
+        SessionFactory sesionFactory = HibernateUtil.getSessionFactory();
+        try {
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
+            sesion.save(empleado);
+
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+        } finally {
+            sesionFactory.close();
+        }
+    }
+     private void manejaExcepcion(HibernateException he) throws HibernateException, IllegalStateException {
+        throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
     }
 }

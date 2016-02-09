@@ -40,7 +40,7 @@ public class ClienteDAO {
 
         } catch (HibernateException he) {
             manejaExcepcion(he);
-            throw he;
+
         } finally {
             sesion.flush();
             sesion.close();
@@ -225,6 +225,6 @@ public class ClienteDAO {
             }
         } catch (ClassNotFoundException | SQLException e) {
 
-       }
+        }
     }
 }

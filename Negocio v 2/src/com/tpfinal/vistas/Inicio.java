@@ -1,6 +1,5 @@
 package com.tpfinal.vistas;
 
-import org.hibernate.cfg.Configuration;
 
 /**
  *

@@ -1,18 +1,16 @@
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.tpfinal.modelo.Articulo.java" table="Articulo">
-        <id name="IDarticulo" column="IDarticulo">
-        
+    <class name="com.tpfinal.modelo.Articulo" table="articulo">
+        <id name="idArticulo" column="idArticulo" type="integer">
+            <generator class="increment" />
         </id>
         <property name="Nombre" type="string" column="nombre" />
         <property name="Marca" type="string" column="marca" />
-        <property name="Precio" type="float" column="precio"/>
-        <property name="Stock" type="int" column="stock"/>
+        <property name="Precio" type="integer" column="precio"/>
+        <property name="Stock" type="integer" column="stock"/>
         <property name="Observaciones" type="string" column="observaciones"/>
         <property name="Descripcion" type="string" column="descripcion"/>
         <property name="Actividad" type="string" column="actividad"/>
-        <property name="DiaAlta" type="String" column="diaAlta"/>
-        <property name="MesAlta" type="string" column="mesAlta"/>
-        <property name="AñoAlta" type="string" column="añoAlta"/>
+        <property name="fechaAlta" type="date" column="fechaAlta"/>
     </class>
 </hibernate-mapping>

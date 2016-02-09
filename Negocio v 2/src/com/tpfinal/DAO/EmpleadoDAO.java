@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -21,62 +21,65 @@ import org.hibernate.Transaction;
  */
 public class EmpleadoDAO {
 
-    private Session sesion;
-    private Transaction tx;
+    private final SessionFactory sesionFactory = HibernateUtil.getSessionFactory();
 
-    public String guardarEmpleado(Empleado empleado) throws HibernateException {
-        String NumEmpleado = "0";
+    public EmpleadoDAO() {
+
+    }
+
+    public void guardarEmpleado(Empleado empleado) throws HibernateException {
 
         try {
-            this.iniciaOperacion();
-            NumEmpleado = (String) sesion.save(empleado);
-            tx.commit();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
+            sesion.save(empleado);
 
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
         } finally {
-            sesion.flush();
-            sesion.close();
+            sesionFactory.close();
         }
-
-        return NumEmpleado;
     }
 
     public void actualizaCurso(Empleado empleado) throws HibernateException {
         try {
-            iniciaOperacion();
+
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
             sesion.update(empleado);
-            tx.commit();
+
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
         } finally {
-            sesion.close();
+            sesionFactory.close();
         }
     }
 
     public void eliminaEmpleado(Empleado empleado) throws HibernateException, IllegalStateException {
         try {
-            iniciaOperacion();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
             sesion.delete(empleado);
-            tx.commit();
+
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
         } finally {
-            sesion.close();
+            sesionFactory.close();
         }
     }
 
     public Empleado obtenEmpleado(String NumEmpleado) throws HibernateException {
         Empleado empleado = null;
         try {
-            iniciaOperacion();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
 
             empleado = (Empleado) sesion.get(Empleado.class, NumEmpleado);
         } finally {
-            sesion.close();
+            sesionFactory.close();
         }
 
         return empleado;
@@ -85,11 +88,12 @@ public class EmpleadoDAO {
     public Empleado datosEmpleado(String NumEmpleado) throws HibernateException {
         Empleado empleado = null;
         try {
-            iniciaOperacion();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
 
             empleado = (Empleado) sesion.get(Empleado.class, NumEmpleado);
         } finally {
-            sesion.close();
+            sesionFactory.close();
         }
 
         return empleado;
@@ -100,49 +104,44 @@ public class EmpleadoDAO {
         List<Empleado> listaEmpleado = null;
 
         try {
-            iniciaOperacion();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
             listaEmpleado = sesion.createQuery("from Empleado").list();
 
         } finally {
-            sesion.close();
+            sesionFactory.close();
         }
 
         return listaEmpleado;
     }
 
-    private void iniciaOperacion() throws HibernateException {
-        sesion = HibernateUtil.getSessionFactory().openSession();
-        tx = (Transaction) sesion.beginTransaction();
-    }
-
     private void manejaExcepcion(HibernateException he) throws HibernateException, IllegalStateException {
-        tx.rollback();
         throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
     }
 
     public void BorrarEmpleado(String dni) {
 
-        Connection con = null;
-        PreparedStatement s;
-        String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
-        String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String user = "usuario_java";
-        String clave = "123";
-
-        try {
-            Class.forName(driver);
-            con = DriverManager.getConnection(url, user, clave);
-            s = con.prepareStatement("DELETE FROM ClienteFinal Where DNI= " + dni + "");
-
-            s.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Datos borrados correctamente");
-
-        } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, e);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+//        Connection con = null;
+//        PreparedStatement s;
+//        String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
+//        String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+//        String user = "usuario_java";
+//        String clave = "123";
+//
+//        try {
+//            Class.forName(driver);
+//            con = DriverManager.getConnection(url, user, clave);
+//            s = con.prepareStatement("DELETE FROM ClienteFinal Where DNI= " + dni + "");
+//
+//            s.executeUpdate();
+//
+//            JOptionPane.showMessageDialog(null, "Datos borrados correctamente");
+//
+//        } catch (ClassNotFoundException e) {
+//            JOptionPane.showMessageDialog(null, e);
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e);
+//        }
     }
 
     public void ModificarEmpleado(String dni, String telefono, String direccion, String nombre, String dd, String mm, String aa) {

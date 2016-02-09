@@ -135,12 +135,12 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
-            if ((jTextField1.getText().equals("usuario")) && (jTextField2.getText().equals("usuario"))) {
+            if ((jTextField1.getText().equals("usu")) && (jTextField2.getText().equals("usu"))) {
                 HomeUsuario y = new HomeUsuario();
                 y.setVisible(true);
                 this.setVisible(false);
             } else {
-                if ((jTextField1.getText().equals("administrador")) && (jTextField2.getText().equals("administrador"))) {
+                if ((jTextField1.getText().equals("admin")) && (jTextField2.getText().equals("admin"))) {
                     HomeAdministrador h = new HomeAdministrador();
                     h.setVisible(true);
                     this.setVisible(false);

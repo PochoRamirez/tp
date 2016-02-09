@@ -1,16 +1,13 @@
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.tpfinal.modelo.Venta" table="Venta">
-        <id name="IDventa" column="IDventa">
-        
+    <class name="com.tpfinal.modelo.Venta" table="venta">
+        <id name="idVenta" column="idVenta" type="integer">
+            <generator class="increment" />
         </id>
-        <property name="DNI" type="string" column="DNI" />
-        <property name="IDarticulo" type="string" column="IDarticulo" />
-        <property name="IDempleado" type="float" column="IDempleado"/>
-        <property name="MontoTotal" type="int" column="MontoTotal"/>
-        <property name="DiaVenta" type="string" column="diaVenta"/>
-        <property name="MesVenta" type="string" column="MesVenta"/>
-        <property name="AñoVenta" type="string" column="añoVenta"/>
-        <property name="MinutoVenta" type="String" column="MinutoVenta"/>
+        <property name="dni" type="integer" column="dni" />
+        <property name="idCliente" type="integer" column="idCliente" />
+        <property name="idEmpleado" type="integer" column="idEmpleado" />
+        <property name="monto" type="integer" column="monto"/>
+        <property name="fechaVenta" type="date" column="fechaVenta"/>
     </class>
 </hibernate-mapping>

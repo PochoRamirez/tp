@@ -1,21 +1,14 @@
 package com.tpfinal.modelo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Desi
  */
-public class Articulo {
+public class Articulo implements Serializable{
+
     int idArticulo;
     String Nombre;
     String Marca;
@@ -29,8 +22,20 @@ public class Articulo {
     public Articulo() {
     }
 
-    public int getIDarticulo() {
+    public void setIdArticulo(int idArticulo) {
+        this.idArticulo = idArticulo;
+    }
+
+    public void setFechaAlta(Date fechaAlta) {
+        this.fechaAlta = fechaAlta;
+    }
+
+    public int getIdArticulo() {
         return idArticulo;
+    }
+
+    public Date getFechaAlta() {
+        return fechaAlta;
     }
 
     public String getNombre() {
@@ -61,10 +66,6 @@ public class Articulo {
         return Actividad;
     }
 
-    public void setIDarticulo(int IDarticulo) {
-        this.idArticulo = IDarticulo;
-    }
-
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
@@ -93,11 +94,11 @@ public class Articulo {
         this.Actividad = Actividad;
     }
 
-    public void Articulo( String Nombre, String Marca, String Precio, String Stock, String Observaciones, String Descripcion, String Actividad) {
+    public void Articulo(String Nombre, String Marca, String Precio, int Stock, String Observaciones, String Descripcion, String Actividad) {
         this.Nombre = Nombre;
         this.Marca = Marca;
-        this.Precio = (float)Integer.parseInt(Precio);
-        this.Stock = Integer.parseInt(Stock);
+        this.Precio = (float) Integer.parseInt(Precio);
+        this.Stock = Stock;
         this.Observaciones = Observaciones;
         this.Descripcion = Descripcion;
         this.Actividad = Actividad;

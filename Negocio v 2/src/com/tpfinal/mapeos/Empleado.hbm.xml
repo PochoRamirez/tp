@@ -1,18 +1,17 @@
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.tpfinal.modelo.Empleado" table="Empleado">
-        <id name="IDempleado" column="IDempleado">
-        
+    <class name="com.tpfinal.modelo.Empleado" table="empleado">
+        <id name="idEmpleado" column="idEmpleado" type="integer">
+            <generator class="increment" />
         </id>
         <property name="Administrador" type="boolean" column="administrador" />
-        <property name="Controseña" type="string" column="contraseña" />
-        <property name="Nomre" type="string" column="nombre" />
+        <property name="Contraseña" type="string" column="contraseña" />
+        <property name="Nombre" type="string" column="nombre" />
         <property name="Apellido" type="string" column="apellido" />
         <property name="Domicilio" type="string" column="Domicilio"/>
         <property name="Mail" type="string" column="mail"/>
-        <property name="DiaNacimiento" type="string" column="diaNacimiento"/>
-        <property name="MesNacimiento" type="string" column="mesNacimiento"/>
+        <property name="fechaNacimiento" type="date" column="fechaNacimiento"/>
         <property name="Actividad" type="boolean" column="actividad"/>
-        <property name="Telefono" type="String" column="telefono"/>
+        <property name="Telefono" type="integer" column="telefono"/>
     </class>
 </hibernate-mapping>

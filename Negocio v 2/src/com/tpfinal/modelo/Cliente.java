@@ -9,19 +9,41 @@ import java.util.Date;
  */
 public class Cliente {
 
-    int IdCliente;
-    String DNI;
-    String Nombre;
-    String Apellido;
-    String Telefono;
-    String Domicilio;
-    String DiaNacimiento;
-    String MesNacimiento;
-    String AñoNacimiento;
-    String Mail;
-    Date fechaAlta;
+    private int idCliente;
+    private String DNI;
+    private String Nombre;
+    private String Apellido;
+    private String Telefono;
+    private String Domicilio;
+    private Date fechaNacimiento;
+    private String Mail;
+    private Date fechaAlta;
 
     public Cliente() {
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+    
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public void setFechaAlta(Date fechaAlta) {
+        this.fechaAlta = fechaAlta;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public Date getFechaAlta() {
+        return fechaAlta;
     }
 
     public String getDNI() {
@@ -42,18 +64,6 @@ public class Cliente {
 
     public String getDomicilio() {
         return Domicilio;
-    }
-
-    public String getDiaNacimiento() {
-        return DiaNacimiento;
-    }
-
-    public String getMesNacimiento() {
-        return MesNacimiento;
-    }
-
-    public String getAñoNacimiento() {
-        return AñoNacimiento;
     }
 
     public String getMail() {
@@ -80,18 +90,6 @@ public class Cliente {
         this.Domicilio = Domicilio;
     }
 
-    public void setDiaNacimiento(String DiaNacimiento) {
-        this.DiaNacimiento = DiaNacimiento;
-    }
-
-    public void setMesNacimiento(String MesNacimiento) {
-        this.MesNacimiento = MesNacimiento;
-    }
-
-    public void setAñoNacimiento(String AñoNacimiento) {
-        this.AñoNacimiento = AñoNacimiento;
-    }
-
     public void setMail(String Mail) {
         this.Mail = Mail;
     }
@@ -102,11 +100,9 @@ public class Cliente {
         this.Apellido = Apellido;
         this.Telefono = Telefono;
         this.Domicilio = Domicilio;
-        this.DiaNacimiento = DiaNacimiento;
-        this.MesNacimiento = MesNacimiento;
-        this.AñoNacimiento = AñoNacimiento;
+        this.fechaNacimiento = fechaNacimiento;
         this.Mail = Mail;
-        //this.fechaAlta = Calendar.getInstance().getTime();
+        this.fechaAlta = new Date();
 
     }
 

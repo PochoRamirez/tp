@@ -5,7 +5,7 @@
  */
 package com.tpfinal.main;
 
-import org.hibernate.cfg.Configuration;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -14,18 +14,8 @@ import org.hibernate.cfg.Configuration;
 public class Main {
 
     public static void main(String[] args) {
-//        System.out.println("---------Setting up Hibernate --------");
-//        Configuration cfg = new Configuration();
-//        cfg.configure("com.tpfinal.config/hibernate.cfg.xml");
-//        System.out.println("Building sessions.........");
-//        sessions = cfg.buildSessionFactory();
-//
-//        Session session = sessions.openSession();
-//        Transaction tx = null;
-//
-//        tx = session.beginTransaction();
-//        
-
+        SessionFactory sessionFactory;
+             
+        //cfg.configure("com/tpfinal/config/hibernate.cfg.xml"); 
     }
-
 }
