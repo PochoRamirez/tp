@@ -1,23 +1,27 @@
 package com.tpfinal.modelo;
 
-import java.io.Serializable;
+
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
  * @author Desi
  */
-public class Articulo implements Serializable{
+public class Articulo {
 
-    int idArticulo;
-    String Nombre;
-    String Marca;
-    float Precio;
-    int Stock;
-    String Observaciones;
-    String Descripcion;
-    String Actividad;
-    Date fechaAlta;
+    private int idArticulo;
+    private String Nombre;
+    private String Marca;
+    private float Precio;
+    private int Stock;
+    private String Observaciones;
+    private String Descripcion;
+    private String Actividad;
+    private Date fechaAlta;
+
+    private Set<Venta> ventas = new HashSet<Venta>();
 
     public Articulo() {
     }
@@ -28,6 +32,14 @@ public class Articulo implements Serializable{
 
     public void setFechaAlta(Date fechaAlta) {
         this.fechaAlta = fechaAlta;
+    }
+
+    public Set<Venta> getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(Set<Venta> ventas) {
+        this.ventas = ventas;
     }
 
     public int getIdArticulo() {

@@ -9,5 +9,11 @@
         <property name="idEmpleado" type="integer" column="idEmpleado" />
         <property name="monto" type="integer" column="monto"/>
         <property name="fechaVenta" type="date" column="fechaVenta"/>
-    </class>
+    
+        <set name="articulos" table="articulo_venta"
+          inverse="true" lazy="true" fetch="select">
+            <key column="idVenta" />
+            <many-to-many column="idArticulo" class="com.tpfinal.modelo.Articulo" />
+        </set>  
+    </class> 
 </hibernate-mapping>

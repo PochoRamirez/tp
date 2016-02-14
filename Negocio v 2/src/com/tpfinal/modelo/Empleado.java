@@ -1,17 +1,12 @@
 package com.tpfinal.modelo;
 
-import com.tpfinal.DAO.HibernateUtil;
-import java.io.Serializable;
 import java.util.Date;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 /**
  *
  * @author Desi
  */
-public class Empleado implements Serializable {
+public class Empleado {
 
     private int idEmpleado;
     private String Nombre;
@@ -25,10 +20,8 @@ public class Empleado implements Serializable {
     private String Contraseña;
     private int DNI;
 
-   
-    
     public Empleado() {
-        
+
     }
 
     public boolean isAdministrador() {
@@ -66,7 +59,7 @@ public class Empleado implements Serializable {
     public Empleado(boolean Actividad) {
         this.Actividad = Actividad;
         this.Administrador = false;
-        this.Contraseña = "";
+        this.Contraseña = "asd";
 
     }
 
@@ -127,7 +120,7 @@ public class Empleado implements Serializable {
     }
 
     public void Empleado(String Nombre, String Apellido, String Domicilio, String Mail, int DNI, Date fechaNacimiento, int Telefono) {
-        
+
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Domicilio = Domicilio;
@@ -148,21 +141,5 @@ public class Empleado implements Serializable {
     public void CargarEmpleado(String text) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public void guardarEmpleado(Empleado empleado) throws HibernateException {
-        SessionFactory sesionFactory = HibernateUtil.getSessionFactory();
-        try {
-            Session sesion = sesionFactory.openSession();
-            sesion.beginTransaction();
-            sesion.save(empleado);
 
-        } catch (HibernateException he) {
-            manejaExcepcion(he);
-            throw he;
-        } finally {
-            sesionFactory.close();
-        }
-    }
-     private void manejaExcepcion(HibernateException he) throws HibernateException, IllegalStateException {
-        throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
-    }
 }

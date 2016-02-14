@@ -21,7 +21,7 @@ import org.hibernate.SessionFactory;
  */
 public class EmpleadoDAO {
 
-    private final SessionFactory sesionFactory = HibernateUtil.getSessionFactory();
+    SessionFactory sesionFactory = HibernateUtil.getSessionFactory();
 
     public EmpleadoDAO() {
 
@@ -33,6 +33,7 @@ public class EmpleadoDAO {
             Session sesion = sesionFactory.openSession();
             sesion.beginTransaction();
             sesion.save(empleado);
+            sesion.getTransaction().commit();
 
         } catch (HibernateException he) {
             manejaExcepcion(he);
@@ -48,7 +49,7 @@ public class EmpleadoDAO {
             Session sesion = sesionFactory.openSession();
             sesion.beginTransaction();
             sesion.update(empleado);
-
+            sesion.getTransaction().commit();
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
@@ -62,7 +63,7 @@ public class EmpleadoDAO {
             Session sesion = sesionFactory.openSession();
             sesion.beginTransaction();
             sesion.delete(empleado);
-
+            sesion.getTransaction().commit();
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;

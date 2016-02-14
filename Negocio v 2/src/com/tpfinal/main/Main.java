@@ -5,7 +5,7 @@
  */
 package com.tpfinal.main;
 
-import org.hibernate.SessionFactory;
+
 
 /**
  *
@@ -14,7 +14,7 @@ import org.hibernate.SessionFactory;
 public class Main {
 
     public static void main(String[] args) {
-        SessionFactory sessionFactory;
+        
              
         //cfg.configure("com/tpfinal/config/hibernate.cfg.xml"); 
     }

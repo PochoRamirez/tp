@@ -1,7 +1,9 @@
 package com.tpfinal.modelo;
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+
+import java.util.Set;
 
 /**
  *
@@ -9,15 +11,23 @@ import java.util.List;
  */
 public class Venta {
 
-    int idVenta;
-    int dni;
-    List<Articulo> articulos;
-    int idEmpleado;
-    int idCliente;
-    int monto;
-    Date fechaVenta;
+    private int idVenta;
+    private int dni;
+    private Set<Articulo> articulos = new HashSet<Articulo>();
+    private int idEmpleado;
+    private int idCliente;
+    private int monto;
+    private Date fechaVenta;
 
     public Venta() {
+    }
+
+    public Set<Articulo> getArticulos() {
+        return articulos;
+    }
+
+    public void setArticulos(Set<Articulo> articulos) {
+        this.articulos = articulos;
     }
 
     public void setIdCliente(int idCliente) {
@@ -52,9 +62,7 @@ public class Venta {
         return fechaVenta;
     }
 
-    public List<Articulo> getArticulos() {
-        return articulos;
-    }
+    
 
     public int getDni() {
         return dni;
@@ -68,10 +76,7 @@ public class Venta {
         this.dni = dni;
     }
 
-    public void setArticulos(List<Articulo> articulos) {
-        this.articulos = articulos;
-    }
-
+    
     public void setMonto(int monto) {
         this.monto = monto;
     }

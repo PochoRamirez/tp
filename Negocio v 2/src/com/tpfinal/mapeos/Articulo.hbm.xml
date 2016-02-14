@@ -12,5 +12,11 @@
         <property name="Descripcion" type="string" column="descripcion"/>
         <property name="Actividad" type="string" column="actividad"/>
         <property name="fechaAlta" type="date" column="fechaAlta"/>
+        
+         <set name="ventas" table="articulo_venta"
+            inverse="false" lazy="true" fetch="select" cascade="all">
+            <key column="idArticulo" />
+            <many-to-many column="idVenta" class="com.tpfinal.modelo.Venta" />
+        </set>
     </class>
 </hibernate-mapping>

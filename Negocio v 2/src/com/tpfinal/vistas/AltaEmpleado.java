@@ -1,11 +1,7 @@
 package com.tpfinal.vistas;
 
+import com.tpfinal.DAO.EmpleadoDAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import com.tpfinal.modelo.Empleado;
 import java.util.Date;
 
@@ -246,10 +242,10 @@ public class AltaEmpleado extends javax.swing.JFrame {
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
 
         Empleado a = new Empleado(true);
-        Date fechaNacimiento = new Date(Integer.parseInt(jTextFieldDD.getText()), Integer.parseInt(jTextFieldMM.getText()), Integer.parseInt(jTextFieldAAAA.getText()));
-        a.Empleado(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDomicilio.getText(), jTextFieldMail.getText(), Integer.parseInt(jTextFieldDNI.getText()),fechaNacimiento, Integer.parseInt(jTextFieldTelefono.getText()));
-        
-        a.guardarEmpleado(a);
+        Date fechaNacimiento = new Date(Integer.parseInt(jTextFieldAAAA.getText()),Integer.parseInt(jTextFieldMM.getText()),Integer.parseInt(jTextFieldDD.getText()));
+        a.Empleado(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDomicilio.getText(), jTextFieldMail.getText(), Integer.parseInt(jTextFieldDNI.getText()), fechaNacimiento, Integer.parseInt(jTextFieldTelefono.getText()));
+        EmpleadoDAO emp = new EmpleadoDAO();
+        emp.guardarEmpleado(a);
         jTextFieldNombre.setText("");
         jTextFieldApellido.setText("");
         jTextFieldDNI.setText("");
@@ -259,7 +255,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
         jTextFieldAAAA.setText("");
         jTextFieldMail.setText("");
         jTextFieldDomicilio.setText("");
-        
+
 
     }//GEN-LAST:event_GuardarActionPerformed
 
