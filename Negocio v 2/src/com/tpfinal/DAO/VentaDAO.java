@@ -4,6 +4,7 @@ import com.tpfinal.modelo.Venta;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
@@ -12,23 +13,22 @@ import org.hibernate.Transaction;
  */
 public class VentaDAO {
 
-    private Session sesion;
-    private Transaction tx;
+    SessionFactory sesionFactory = HibernateUtil.getSessionFactory();
 
     public String guardaVenta(Venta venta) throws HibernateException {
         String NumVenta = "0";
 
         try {
-            this.iniciaOperacion();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
             NumVenta = (String) sesion.save(venta);
-            tx.commit();
+            sesion.getTransaction().commit();
 
         } catch (HibernateException he) {
-            manejaExcepcion(he);
-            throw he;
+                        throw he;
         } finally {
-            sesion.flush();
-            sesion.close();
+            
+            sesionFactory.close();
         }
 
         return NumVenta;
@@ -36,38 +36,41 @@ public class VentaDAO {
 
     public void actualizaVenta(Venta venta) throws HibernateException {
         try {
-            iniciaOperacion();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
             sesion.update(venta);
-            tx.commit();
+            sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            manejaExcepcion(he);
+            
             throw he;
         } finally {
-            sesion.close();
+            sesionFactory.close();
         }
     }
 
     public void eliminaVenta(Venta venta) throws HibernateException, IllegalStateException {
         try {
-            iniciaOperacion();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
             sesion.delete(venta);
-            tx.commit();
+            sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            manejaExcepcion(he);
+            
             throw he;
         } finally {
-            sesion.close();
+            sesionFactory.close();
         }
     }
 
     public Venta obtenVenta(String NumVenta) throws HibernateException {
         Venta venta = null;
         try {
-            iniciaOperacion();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
 
             venta = (Venta) sesion.get(Venta.class, NumVenta);
         } finally {
-            sesion.close();
+            sesionFactory.close();
         }
 
         return venta;
@@ -76,11 +79,12 @@ public class VentaDAO {
     public Venta datosVenta(String NumVenta) throws HibernateException {
         Venta venta = null;
         try {
-            iniciaOperacion();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
 
             venta = (Venta) sesion.get(Venta.class, NumVenta);
         } finally {
-            sesion.close();
+            sesionFactory.close();
         }
 
         return venta;
@@ -91,24 +95,16 @@ public class VentaDAO {
         List<Venta> listaVenta = null;
 
         try {
-            iniciaOperacion();
+            Session sesion = sesionFactory.openSession();
+            sesion.beginTransaction();
             listaVenta = sesion.createQuery("from Venta").list();
 
         } finally {
-            sesion.close();
+            sesionFactory.close();
         }
 
         return listaVenta;
     }
 
-    private void iniciaOperacion() throws HibernateException {
-        sesion = HibernateUtil.getSessionFactory().openSession();
-        tx = (Transaction) sesion.beginTransaction();
-    }
-
-    private void manejaExcepcion(HibernateException he) throws HibernateException, IllegalStateException {
-        tx.rollback();
-        throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
-    }
 
 }

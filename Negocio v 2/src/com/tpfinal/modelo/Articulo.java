@@ -1,6 +1,5 @@
 package com.tpfinal.modelo;
 
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -115,14 +114,6 @@ public class Articulo {
         this.Descripcion = Descripcion;
         this.Actividad = Actividad;
         this.fechaAlta = new Date();
-    }
-
-    public void CargarArticulo(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void ModificarArticulo(String text, String text0, String text1, String text2, String text3) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -1,10 +1,10 @@
 package com.tpfinal.vistas;
 
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import com.tpfinal.modelo.Fecha;
 import com.tpfinal.modelo.Venta;
 
 public class AltaVenta extends javax.swing.JFrame {
@@ -16,7 +16,7 @@ public class AltaVenta extends javax.swing.JFrame {
     DefaultTableModel dtm;
     int total;
 
-    Fecha a = new Fecha();
+    Date a = new Date();
 
     public AltaVenta() {
         initComponents();

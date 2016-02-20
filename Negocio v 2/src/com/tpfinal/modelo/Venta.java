@@ -2,7 +2,6 @@ package com.tpfinal.modelo;
 
 import java.util.Date;
 import java.util.HashSet;
-
 import java.util.Set;
 
 /**
@@ -62,8 +61,6 @@ public class Venta {
         return fechaVenta;
     }
 
-    
-
     public int getDni() {
         return dni;
     }
@@ -76,34 +73,8 @@ public class Venta {
         this.dni = dni;
     }
 
-    
     public void setMonto(int monto) {
         this.monto = monto;
     }
 
-//   public void Venta(String codpro, String prod, String cant, String car, String elid) {
-//        try {
-//        
-//            s = con.prepareStatement("insert into Venta values (?,?,?,?,?,?,?,?)");
-//
-//            s.setString(1, codpro);
-//            s.setString(2, prod);
-//            s.setString(3, cant);
-//
-//            s.setString(4, car);
-//            Fecha a = new Fecha();
-//            a.FechaMovimiento();
-//
-//            s.setString(5, a.getDd());
-//            s.setString(6, a.getMm());
-//            s.setString(7, a.getAa());
-//            s.setString(8, elid);
-//            s.executeUpdate();
-//
-//        } catch (ClassNotFoundException e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-//    }
 }

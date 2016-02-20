@@ -93,7 +93,7 @@ public class Cliente {
         this.Mail = Mail;
     }
 
-    public void cliente(String Nombre, String Apellido, String DNI, String Telefono, String Domicilio, String DiaNacimiento, String MesNacimiento, String AñoNacimiento, String Mail) {
+    public Cliente(String Nombre, String Apellido, String DNI, String Telefono, String Domicilio, Date fechaNacimiento, String Mail) {
         this.DNI = DNI;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
@@ -103,18 +103,6 @@ public class Cliente {
         this.Mail = Mail;
         this.fechaAlta = new Date();
 
-    }
-
-    public void BorrarCliente(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void ModificarCiente(String text, String text0, String text1, String text2, String text3, String text4, String text5) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void CargarCliente(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
