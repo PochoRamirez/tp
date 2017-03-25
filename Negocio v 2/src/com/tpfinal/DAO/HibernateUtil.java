@@ -8,7 +8,7 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 
-    private static SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory=null;
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
@@ -25,6 +25,6 @@ public class HibernateUtil {
     }
     
     public static void manejaExcepcion(HibernateException he) throws HibernateException, IllegalStateException {
-        throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
+        throw new HibernateException("Ocurrió un error en la capa de acceso a datos" + he.toString());
     }
 }

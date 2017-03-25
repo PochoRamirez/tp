@@ -19,11 +19,8 @@ public class VentaDAO {
             NumVenta = (String) sesion.save(venta);
             sesion.getTransaction().commit();
 
-        } catch (HibernateException he) {
-                        throw he;
-        } finally {
-            
-            sesionFactory.close();
+        }  catch (HibernateException he){
+            HibernateUtil.manejaExcepcion(he);
         }
 
         return NumVenta;
@@ -35,11 +32,8 @@ public class VentaDAO {
             sesion.beginTransaction();
             sesion.update(venta);
             sesion.getTransaction().commit();
-        } catch (HibernateException he) {
-            
-            throw he;
-        } finally {
-            sesionFactory.close();
+        }  catch (HibernateException he){
+            HibernateUtil.manejaExcepcion(he);
         }
     }
 
@@ -49,11 +43,8 @@ public class VentaDAO {
             sesion.beginTransaction();
             sesion.delete(venta);
             sesion.getTransaction().commit();
-        } catch (HibernateException he) {
-            
-            throw he;
-        } finally {
-            sesionFactory.close();
+        } catch (HibernateException he){
+            HibernateUtil.manejaExcepcion(he);
         }
     }
 
@@ -64,8 +55,8 @@ public class VentaDAO {
             sesion.beginTransaction();
 
             venta = (Venta) sesion.get(Venta.class, NumVenta);
-        } finally {
-            sesionFactory.close();
+        } catch (HibernateException he){
+            HibernateUtil.manejaExcepcion(he);
         }
 
         return venta;
@@ -78,8 +69,8 @@ public class VentaDAO {
             Session sesion = sesionFactory.openSession();
             sesion.beginTransaction();
             listaVenta = (ArrayList<Venta>) sesion.createQuery("from Venta").list();
-        } finally {
-            sesionFactory.close();
+        } catch (HibernateException he){
+            HibernateUtil.manejaExcepcion(he);
         }
         return listaVenta;
     }
