@@ -1,27 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.tpfinal.vistas;
 
-import javax.swing.table.DefaultTableModel;
-import java.sql.*;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import com.tpfinal.DAO.ArticuloDAO;
 import com.tpfinal.modelo.Articulo;
 
-/**
- *
- * @author Agustin
- */
 public class ModificarArticulo extends javax.swing.JFrame {
 
-    Connection con;
-    PreparedStatement s;
-    ResultSet r;
-    ResultSetMetaData rsm;
-    DefaultTableModel dtm;
+    ArticuloDAO ADao = new ArticuloDAO();
 
     public ModificarArticulo() {
         initComponents();
@@ -40,8 +24,8 @@ public class ModificarArticulo extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jTextFieldstock = new javax.swing.JTextField();
-        jTextFieldpv = new javax.swing.JTextField();
-        jTextFielddni = new javax.swing.JTextField();
+        jTextFieldprecio = new javax.swing.JTextField();
+        jTextFieldId = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jTextFieldnombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -85,9 +69,9 @@ public class ModificarArticulo extends javax.swing.JFrame {
             }
         });
 
-        jTextFielddni.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFielddniActionPerformed(evt);
+                jTextFieldIdActionPerformed(evt);
             }
         });
 
@@ -160,7 +144,7 @@ public class ModificarArticulo extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFielddni, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -191,7 +175,7 @@ public class ModificarArticulo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldpv, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel14)
@@ -212,7 +196,7 @@ public class ModificarArticulo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFielddni, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldstock, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
@@ -231,7 +215,7 @@ public class ModificarArticulo extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldpv, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,13 +240,13 @@ public class ModificarArticulo extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        Articulo z = new Articulo();
-        z.CargarArticulo(jTextFielddni.getText());
 
-        this.jTextFieldnombre.setText(z.getNombre());
-        this.jTextFieldmarca.setText(z.getMarca());
-          //  problema porque no es string        this.jTextFieldpv.setText(z.getPrecio());
-        //   idem                               this.jTextFieldstock.setText(z.getStock());
+        Articulo art = ADao.obtenArticulo(jTextFieldId.getText());
+
+        this.jTextFieldnombre.setText(String.valueOf(art.getNombre()));
+        this.jTextFieldmarca.setText(String.valueOf(art.getMarca()));
+        this.jTextFieldprecio.setText(String.valueOf(art.getPrecio()));
+        this.jTextFieldstock.setText(String.valueOf(art.getStock()));
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -271,14 +255,14 @@ public class ModificarArticulo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldstockActionPerformed
 
-    private void jTextFielddniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielddniActionPerformed
+    private void jTextFieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFielddniActionPerformed
+    }//GEN-LAST:event_jTextFieldIdActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Articulo a = new Articulo();
-        a.ModificarArticulo(jTextFielddni.getText(), jTextFieldnombre.getText(), jTextFieldmarca.getText(), jTextFieldpv.getText(), jTextFieldstock.getText());
+        Articulo a = new Articulo(jTextFieldnombre.getText(), jTextFieldmarca.getText(), jTextFieldprecio.getText(), Integer.parseInt(jTextFieldstock.getText()), jTextFieldObservaciones.getText(), jTextFieldDescripcion.getText(), jTextFieldActividad.getText());
+        ADao.actualizaArticulo(a);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -346,11 +330,11 @@ public class ModificarArticulo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextFieldActividad;
     private javax.swing.JTextField jTextFieldDescripcion;
+    private javax.swing.JTextField jTextFieldId;
     private javax.swing.JTextField jTextFieldObservaciones;
-    private javax.swing.JTextField jTextFielddni;
     private javax.swing.JTextField jTextFieldmarca;
     private javax.swing.JTextField jTextFieldnombre;
-    private javax.swing.JTextField jTextFieldpv;
+    private javax.swing.JTextField jTextFieldprecio;
     private javax.swing.JTextField jTextFieldstock;
     // End of variables declaration//GEN-END:variables
 }

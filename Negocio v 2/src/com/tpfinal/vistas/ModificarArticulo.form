@@ -35,7 +35,7 @@
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextFielddni" min="-2" pref="272" max="-2" attributes="0"/>
+                      <Component id="jTextFieldId" min="-2" pref="272" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -72,7 +72,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextFieldpv" min="-2" pref="143" max="-2" attributes="0"/>
+                      <Component id="jTextFieldprecio" min="-2" pref="143" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
@@ -100,7 +100,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel5" min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextFielddni" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="jTextFieldId" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="jTextFieldstock" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
@@ -124,7 +124,7 @@
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldpv" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="jTextFieldprecio" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -182,11 +182,11 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldstockActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldpv">
+    <Component class="javax.swing.JTextField" name="jTextFieldprecio">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFielddni">
+    <Component class="javax.swing.JTextField" name="jTextFieldId">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFielddniActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldIdActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">

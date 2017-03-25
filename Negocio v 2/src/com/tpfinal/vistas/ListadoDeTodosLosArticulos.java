@@ -14,12 +14,6 @@ import com.tpfinal.modelo.Articulo;
 
 public class ListadoDeTodosLosArticulos extends javax.swing.JFrame {
 
-    Connection con;
-    PreparedStatement s;
-    ResultSet r;
-    ResultSetMetaData rsm;
-    DefaultTableModel dtm;
-
     public ListadoDeTodosLosArticulos() {
         initComponents();
     }
@@ -47,9 +41,17 @@ public class ListadoDeTodosLosArticulos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Marca", "Precio de Venta", "IVA", "Stock", "id_producto"
+                "Nombre", "Marca", "Precio de Venta", "Descripcion", "Stock", "id_producto"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, true, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -126,31 +128,22 @@ public class ListadoDeTodosLosArticulos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
-
-            String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
-
-            String user = "usuario_java";
-            String clave = "123";
-
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection(url, user, clave);
-            s = con.prepareStatement("select Nombre, Marca, Precio, IVA, Stock, id_producto from Producto");
-            r = s.executeQuery();
-            rsm = r.getMetaData();
-            ArrayList<Object[]> data = new ArrayList<>();
-            while (r.next()) {
-
-                Object[] rows = new Object[rsm.getColumnCount()];
-                for (int i = 0; i < rows.length; i++) {
-                    rows[i] = r.getObject(i + 1);
-                }
-                data.add(rows);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            Object[] rows = new Object[6];
+            ArticuloDAO Adoa = new ArticuloDAO();
+            ArrayList<Articulo> articulos = Adoa.obtenListaArticulo();
+                           
+            for (Articulo articulo : articulos) {
+                rows[0] = articulo.getNombre();
+                rows[1] = articulo.getMarca();
+                rows[2] = articulo.getFechaAlta();
+                rows[3] = articulo.getDescripcion();
+                rows[4] = articulo.getStock();
+                rows[5] = articulo.getIdArticulo();
+                model.addRow(rows);
             }
-            dtm = (DefaultTableModel) this.jTable1.getModel();
-            for (int i = 0; i < data.size(); i++) {
-                dtm.addRow(data.get(i));
-            }
-        } catch (ClassNotFoundException | SQLException e) {
+         
+        } catch (Error e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
 
@@ -159,7 +152,7 @@ public class ListadoDeTodosLosArticulos extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Borrar por id productos
         ArticuloDAO po = new ArticuloDAO();
-        po.BorrarArticulo(jTextField1.getText());
+        po.eliminarArticuloById(jTextField1.getText());
 
 
     }//GEN-LAST:event_jButton3ActionPerformed

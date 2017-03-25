@@ -7,7 +7,7 @@
         <property name="DNI" type="string" column="dni" />
         <property name="Nombre" type="string" column="nombre" />
         <property name="Apellido" type="string" column="apellido" />
-        <property name="Telefono" type="integer" column="telefono"/>
+        <property name="Telefono" type="string" column="telefono"/>
         <property name="Domicilio" type="string" column="domicilio"/>
         <property name="fechaNacimiento" type="date" column="fechaNacimiento"/>
         <property name="Mail" type="string" column="mail"/>

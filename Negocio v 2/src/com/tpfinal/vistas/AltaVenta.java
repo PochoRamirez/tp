@@ -191,10 +191,9 @@ public class AltaVenta extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         int cantidad = 0;
-        String x = jTextField2.getText();
-        int xx = Integer.parseInt(x);
+        int cant = Integer.getInteger(jTextField2.getText());
 
-        while (cantidad < xx) {
+        while (cantidad < cant) {
             cantidad = cantidad + 1;
             try {
 
@@ -330,7 +329,7 @@ public class AltaVenta extends javax.swing.JFrame {
                     }
 
                     Venta v = new Venta();
-                    v.Venta(codpro, prod, cant, car, elid);
+                    //v.Venta(codpro, prod, cant, car, elid);
 
                 }
             }

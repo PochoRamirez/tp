@@ -2,10 +2,6 @@ package com.tpfinal.modelo;
 
 import java.util.Date;
 
-/**
- *
- * @author Desi
- */
 public class Cliente {
 
     private int idCliente;
@@ -102,7 +98,5 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
         this.Mail = Mail;
         this.fechaAlta = new Date();
-
     }
-
 }

@@ -5,6 +5,9 @@
  */
 package com.tpfinal.vistas;
 
+import com.tpfinal.DAO.ArticuloDAO;
+import com.tpfinal.DAO.ClienteDAO;
+import com.tpfinal.modelo.Articulo;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,11 +17,6 @@ import com.tpfinal.modelo.Cliente;
 
 public class ListadoDeTodosLosClientes extends javax.swing.JFrame {
 
-    Connection con;
-    PreparedStatement s;
-    ResultSet r;
-    ResultSetMetaData rsm;
-    DefaultTableModel dtm;
 
     public ListadoDeTodosLosClientes() {
         initComponents();
@@ -47,7 +45,7 @@ public class ListadoDeTodosLosClientes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Telefono", "Direccion", "DNI", "DIA", "MES", "AÑO"
+                "Nombre", "Telefono", "Direccion", "DNI", "Fecha Alta"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -125,34 +123,23 @@ public class ListadoDeTodosLosClientes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-
-            String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
-
-            String user = "usuario_java";
-            String clave = "123";
-
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection(url, user, clave);
-            s = con.prepareStatement("select Nombre, Telefono, Direccion, DNI, Dia, Mes, Año from ClienteFinal");
-            r = s.executeQuery();
-            rsm = r.getMetaData();
-            ArrayList<Object[]> data = new ArrayList<>();
-            while (r.next()) {
-
-                Object[] rows = new Object[rsm.getColumnCount()];
-                for (int i = 0; i < rows.length; i++) {
-                    rows[i] = r.getObject(i + 1);
-                }
-                data.add(rows);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            Object[] rows = new Object[6];
+            ClienteDAO Cdao = new ClienteDAO();
+            ArrayList<Cliente> clientes = Cdao.obtenListaCliente();
+                           
+            for (Cliente cliente : clientes) {
+                rows[0] = cliente.getNombre();
+                rows[1] = cliente.getTelefono();
+                rows[2] = cliente.getDomicilio();
+                rows[3] = cliente.getDNI();
+                rows[4] = cliente.getFechaAlta();
+                model.addRow(rows);
             }
-            dtm = (DefaultTableModel) this.jTable1.getModel();
-            for (int i = 0; i < data.size(); i++) {
-                dtm.addRow(data.get(i));
-            }
-        } catch (ClassNotFoundException | SQLException e) {
+         
+        } catch (Error e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        }
-
+        }                         
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -162,8 +149,8 @@ public class ListadoDeTodosLosClientes extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        Cliente oz = new Cliente();
-        oz.BorrarCliente(jTextFieldDNI.getText());
+        ClienteDAO cDao = new ClienteDAO();
+        cDao.BorrarClienteByDNI(jTextFieldDNI.getText());
 
 
     }//GEN-LAST:event_jButton3ActionPerformed

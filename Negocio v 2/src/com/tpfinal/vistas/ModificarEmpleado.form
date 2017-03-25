@@ -37,12 +37,12 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextFieldtelefono1" min="-2" pref="164" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldmail" min="-2" pref="164" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldnombre1" min="-2" pref="142" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldapellido" min="-2" pref="142" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -118,7 +118,7 @@
                   <Component id="jTextFieldnombre" alignment="0" max="32767" attributes="0"/>
                   <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                   <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jTextFieldnombre1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTextFieldapellido" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -128,7 +128,7 @@
                   </Group>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldtelefono1" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="jTextFieldmail" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -278,9 +278,9 @@
         <Property name="text" type="java.lang.String" value="Apellido:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldnombre1">
+    <Component class="javax.swing.JTextField" name="jTextFieldapellido">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldnombre1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldapellidoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
@@ -291,7 +291,7 @@
         <Property name="text" type="java.lang.String" value="Mail:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldtelefono1">
+    <Component class="javax.swing.JTextField" name="jTextFieldmail">
     </Component>
   </SubComponents>
 </Form>

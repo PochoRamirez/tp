@@ -1,10 +1,5 @@
 package com.tpfinal.vistas;
 import com.tpfinal.DAO.ArticuloDAO;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import com.tpfinal.modelo.Articulo;
 
 
@@ -247,8 +242,7 @@ public class AltaArticulo extends javax.swing.JFrame {
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
  
-        Articulo p = new Articulo();
-        p.Articulo(jTextFieldNombre.getText(), jTextFieldMarca.getText(), jTextFieldPC.getText(),Integer.parseInt(jTextFieldStock.getText()), jTextFieldDescripcion.getText(), jTextFieldObservaciones.getText(), jTextFieldActividad.getText());
+        Articulo p = new Articulo(jTextFieldNombre.getText(), jTextFieldMarca.getText(), jTextFieldPC.getText(),Integer.parseInt(jTextFieldStock.getText()), jTextFieldDescripcion.getText(), jTextFieldObservaciones.getText(), jTextFieldActividad.getText());
         ArticuloDAO a = new ArticuloDAO();
         a.guardaArticulo(p);
         jTextFieldNombre.setText("");

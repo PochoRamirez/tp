@@ -1,16 +1,11 @@
 package com.tpfinal.DAO;
 
 import com.tpfinal.modelo.Venta;
-import java.util.List;
+import java.util.ArrayList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
-/**
- *
- * @author Desi
- */
 public class VentaDAO {
 
     SessionFactory sesionFactory = HibernateUtil.getSessionFactory();
@@ -76,35 +71,16 @@ public class VentaDAO {
         return venta;
     }
 
-    public Venta datosVenta(String NumVenta) throws HibernateException {
-        Venta venta = null;
-        try {
-            Session sesion = sesionFactory.openSession();
-            sesion.beginTransaction();
-
-            venta = (Venta) sesion.get(Venta.class, NumVenta);
-        } finally {
-            sesionFactory.close();
-        }
-
-        return venta;
-    }
-
     @SuppressWarnings("unchecked")
-    public List<Venta> obtenListaVenta() throws HibernateException {
-        List<Venta> listaVenta = null;
-
+    public ArrayList<Venta> obtenListaVenta() throws HibernateException {
+        ArrayList<Venta> listaVenta = new ArrayList<Venta>();
         try {
             Session sesion = sesionFactory.openSession();
             sesion.beginTransaction();
-            listaVenta = sesion.createQuery("from Venta").list();
-
+            listaVenta = (ArrayList<Venta>) sesion.createQuery("from Venta").list();
         } finally {
             sesionFactory.close();
         }
-
         return listaVenta;
     }
-
-
 }

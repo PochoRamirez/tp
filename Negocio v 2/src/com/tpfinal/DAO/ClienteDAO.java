@@ -1,17 +1,13 @@
 package com.tpfinal.DAO;
 
 import com.tpfinal.modelo.Cliente;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-/**
- *
- * @author Desi
- */
 public class ClienteDAO {
 
     SessionFactory sesionFactory = HibernateUtil.getSessionFactory();
@@ -22,14 +18,11 @@ public class ClienteDAO {
             sesion.beginTransaction();
             sesion.save(cliente);
             sesion.getTransaction().commit();
-
         } catch (HibernateException he) {
             throw he;
         } finally {
             sesionFactory.close();
         }
-
-        //return NumCliente;
     }
 
     public void actualizaCliente(Cliente cliente) throws HibernateException {
@@ -50,7 +43,6 @@ public class ClienteDAO {
             Session sesion = sesionFactory.openSession();
             sesion.beginTransaction();
             sesion.delete(cliente);
-
         } catch (HibernateException he) {
             System.err.print(he);
             throw he;
@@ -64,57 +56,36 @@ public class ClienteDAO {
         try {
             Session sesion = sesionFactory.openSession();
             sesion.beginTransaction();
-
             cli = (Cliente) sesion.get(Cliente.class, NumCliente);
         } finally {
             sesionFactory.close();
         }
-
         return cli;
     }
 
-    public Cliente datosCliente(String NumCliente) throws HibernateException {
-        Cliente cliente = null;
-        try {
-            Session sesion = sesionFactory.openSession();
-            sesion.beginTransaction();
-
-            cliente = (Cliente) sesion.get(Cliente.class, NumCliente);
-        } finally {
-            sesionFactory.close();
-        }
-
-        return cliente;
-    }
-
     @SuppressWarnings("unchecked")
-    public List<Cliente> obtenListaCliente() throws HibernateException {
-        List<Cliente> listaCliente = null;
-
+    public ArrayList<Cliente> obtenListaCliente() throws HibernateException {
+        ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
         try {
             Session sesion = sesionFactory.openSession();
             sesion.beginTransaction();
-            listaCliente = sesion.createQuery("from Cliente").list();
-
+            listaCliente = (ArrayList<Cliente>) sesion.createQuery("from Cliente").list();
         } finally {
             sesionFactory.close();
         }
-
         return listaCliente;
     }
 
-    public void BorrarCliente(String dni) {
-        Cliente cliente = new Cliente();
+    public void BorrarClienteByDNI(String dni) {
         try {
             Session sesion = sesionFactory.openSession();
             sesion.beginTransaction();
 
-            cliente = (Cliente) sesion.get(Cliente.class, dni);
+            Cliente cliente = (Cliente) sesion.get(Cliente.class, dni);
             sesion.delete(cliente);
             JOptionPane.showMessageDialog(null, "Datos borrados correctamente");
         } catch (HibernateException he) {
             throw he;
-
         }
     }
 
@@ -125,12 +96,9 @@ public class ClienteDAO {
             sesion.beginTransaction();
             sesion.update(cli);
             sesion.getTransaction().commit();
-
             JOptionPane.showMessageDialog(null, "Datos Modificados correctamente");
-
         } catch (HibernateException he) {
             JOptionPane.showMessageDialog(null, he);
         }
-
     }
 }

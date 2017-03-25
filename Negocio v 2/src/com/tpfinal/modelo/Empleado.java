@@ -2,10 +2,6 @@ package com.tpfinal.modelo;
 
 import java.util.Date;
 
-/**
- *
- * @author Desi
- */
 public class Empleado {
 
     private int idEmpleado;
@@ -60,7 +56,6 @@ public class Empleado {
         this.Actividad = Actividad;
         this.Administrador = false;
         this.Contraseña = "asd";
-
     }
 
     public int getIdEmpleado() {
@@ -119,8 +114,7 @@ public class Empleado {
         this.Actividad = Actividad;
     }
 
-    public void Empleado(String Nombre, String Apellido, String Domicilio, String Mail, int DNI, Date fechaNacimiento, int Telefono) {
-
+    public void setEmpleado(String Nombre, String Apellido, String Domicilio, String Mail, int DNI, Date fechaNacimiento, int Telefono) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Domicilio = Domicilio;
@@ -129,5 +123,4 @@ public class Empleado {
         this.fechaNacimiento = fechaNacimiento;
         this.Telefono = Telefono;
     }
-
 }

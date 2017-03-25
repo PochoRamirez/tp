@@ -241,9 +241,12 @@ public class AltaEmpleado extends javax.swing.JFrame {
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
 
+        int year = Integer.parseInt(jTextFieldAAAA.getText());
+        int month = Integer.parseInt(jTextFieldMM.getText());
+        int day = Integer.parseInt(jTextFieldDD.getText());
+        Date fechaNacimiento = new Date(year, month, day);
         Empleado a = new Empleado(true);
-        Date fechaNacimiento = new Date(Integer.parseInt(jTextFieldAAAA.getText()),Integer.parseInt(jTextFieldMM.getText()),Integer.parseInt(jTextFieldDD.getText()));
-        a.Empleado(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDomicilio.getText(), jTextFieldMail.getText(), Integer.parseInt(jTextFieldDNI.getText()), fechaNacimiento, Integer.parseInt(jTextFieldTelefono.getText()));
+        a.setEmpleado(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDomicilio.getText(), jTextFieldMail.getText(), Integer.parseInt(jTextFieldDNI.getText()), fechaNacimiento, Integer.parseInt(jTextFieldTelefono.getText()));
         EmpleadoDAO emp = new EmpleadoDAO();
         emp.guardarEmpleado(a);
         jTextFieldNombre.setText("");
@@ -275,15 +278,14 @@ public class AltaEmpleado extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AltaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AltaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AltaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AltaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

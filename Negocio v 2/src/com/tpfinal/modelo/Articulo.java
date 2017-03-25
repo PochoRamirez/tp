@@ -4,10 +4,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- *
- * @author Desi
- */
 public class Articulo {
 
     private int idArticulo;
@@ -23,6 +19,10 @@ public class Articulo {
     private Set<Venta> ventas = new HashSet<Venta>();
 
     public Articulo() {
+    }
+    
+    public Articulo(String Nombre, String Marca, String Precio, int Stock, String Observaciones, String Descripcion, String Actividad) {
+        this.setArticulo(Nombre, Marca, Precio, Stock, Observaciones, Descripcion, Actividad);
     }
 
     public void setIdArticulo(int idArticulo) {
@@ -105,7 +105,7 @@ public class Articulo {
         this.Actividad = Actividad;
     }
 
-    public void Articulo(String Nombre, String Marca, String Precio, int Stock, String Observaciones, String Descripcion, String Actividad) {
+    public void setArticulo(String Nombre, String Marca, String Precio, int Stock, String Observaciones, String Descripcion, String Actividad) {
         this.Nombre = Nombre;
         this.Marca = Marca;
         this.Precio = (float) Integer.parseInt(Precio);

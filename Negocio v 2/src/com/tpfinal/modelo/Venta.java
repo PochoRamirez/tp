@@ -4,10 +4,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- *
- * @author Desi
- */
 public class Venta {
 
     private int idVenta;

@@ -5,6 +5,7 @@
  */
 package com.tpfinal.vistas;
 
+import com.tpfinal.DAO.EmpleadoDAO;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,12 +14,6 @@ import javax.swing.JOptionPane;
 import com.tpfinal.modelo.Empleado;
 
 public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
-
-    Connection con;
-    PreparedStatement s;
-    ResultSet r;
-    ResultSetMetaData rsm;
-    DefaultTableModel dtm;
 
     public ListadoDeTodosLosEmpleados() {
         initComponents();
@@ -47,7 +42,7 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Telefono", "Direccion", "DNI", "DIA", "MES", "AÑO"
+                "Nombre", "Telefono", "Direccion", "DNI", "Fecha"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -125,34 +120,22 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-
-            String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
-
-            String user = "usuario_java";
-            String clave = "123";
-
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection(url, user, clave);
-            s = con.prepareStatement("select Nombre, Telefono, Direccion, DNI, Dia, Mes, Año from ClienteFinal");
-            r = s.executeQuery();
-            rsm = r.getMetaData();
-            ArrayList<Object[]> data = new ArrayList<>();
-            while (r.next()) {
-
-                Object[] rows = new Object[rsm.getColumnCount()];
-                for (int i = 0; i < rows.length; i++) {
-                    rows[i] = r.getObject(i + 1);
-                }
-                data.add(rows);
-            }
-            dtm = (DefaultTableModel) this.jTable1.getModel();
-            for (int i = 0; i < data.size(); i++) {
-                dtm.addRow(data.get(i));
-            }
-        } catch (ClassNotFoundException | SQLException e) {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            Object[] rows = new Object[6];
+            EmpleadoDAO Edao = new EmpleadoDAO();
+            ArrayList<Empleado> empleados = Edao.obtenListaEmpleado();
+                           
+            for (Empleado empleado : empleados) {
+                rows[0] = empleado.getNombre();
+                rows[1] = empleado.getTelefono();
+                rows[2] = empleado.getDomicilio();
+                rows[3] = empleado.getDNI();
+                rows[4] = empleado.getFechaNacimiento();
+                model.addRow(rows);
+            }     
+        } catch (Error e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -162,8 +145,8 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        Empleado oz = new Empleado(true);
-        oz.BorrarEmpleado(jTextFieldDNI.getText());
+        EmpleadoDAO Edao = new EmpleadoDAO();
+        Edao.eliminarEmpleadoById(jTextFieldDNI.getText());
 
 
     }//GEN-LAST:event_jButton3ActionPerformed

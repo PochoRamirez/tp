@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.tpfinal.vistas;
 
-import javax.swing.table.DefaultTableModel;
-import java.sql.*;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import com.tpfinal.DAO.ClienteDAO;
 import com.tpfinal.modelo.Cliente;
+import java.util.Date;
 
 public class ModificarCliente extends javax.swing.JFrame {
 
-    Connection con;
-    PreparedStatement s;
-    ResultSet r;
-    ResultSetMetaData rsm;
-    DefaultTableModel dtm;
-
+    ClienteDAO cDao = new ClienteDAO();
+    
     public ModificarCliente() {
         initComponents();
     }
@@ -45,9 +34,9 @@ public class ModificarCliente extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextFieldnombre1 = new javax.swing.JTextField();
+        jTextFieldapellido = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextFieldtelefono1 = new javax.swing.JTextField();
+        jTextFieldmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,9 +106,9 @@ public class ModificarCliente extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setText("Apellido:");
 
-        jTextFieldnombre1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldapellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldnombre1ActionPerformed(evt);
+                jTextFieldapellidoActionPerformed(evt);
             }
         });
 
@@ -144,11 +133,11 @@ public class ModificarCliente extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldtelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextFieldmail, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFieldnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jTextFieldapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -203,7 +192,7 @@ public class ModificarCliente extends javax.swing.JFrame {
                     .addComponent(jTextFieldnombre, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldnombre1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jTextFieldapellido, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -211,7 +200,7 @@ public class ModificarCliente extends javax.swing.JFrame {
                         .addComponent(jTextFieldtelefono))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldtelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldmail, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
@@ -241,9 +230,8 @@ public class ModificarCliente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Cliente a = new Cliente();
-        a.ModificarCiente(jTextFielddni.getText(), jTextFieldtelefono.getText(), jTextFielddireccion.getText(), jTextFieldnombre.getText(), jTextFielddd.getText(), jTextFieldmm.getText(), jTextFieldaaaa.getText());
-
+        Date date = new Date(Integer.parseInt(jTextFieldaaaa.getText()), Integer.parseInt(jTextFieldmm.getText()),Integer.parseInt(jTextFielddd.getText()));
+        cDao.ModificarCiente(jTextFieldnombre.getText(), jTextFieldapellido.getText(),jTextFielddni.getText(), jTextFieldtelefono.getText(), jTextFielddireccion.getText(), date, jTextFieldmail.getText());
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -257,15 +245,14 @@ public class ModificarCliente extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        Cliente o = new Cliente();
-        o.CargarCliente(jTextFielddni.getText());
+        Cliente cli = cDao.obtenCliente(jTextFielddni.getText());
 
-        this.jTextFieldnombre.setText(o.getNombre());
-        this.jTextFieldtelefono.setText(o.getTelefono());
-        this.jTextFielddireccion.setText(o.getDomicilio());
-        this.jTextFielddd.setText(o.getDiaNacimiento());
-        this.jTextFieldmm.setText(o.getMesNacimiento());
-        this.jTextFieldaaaa.setText(o.getAñoNacimiento());
+        this.jTextFieldnombre.setText(cli.getNombre());
+        this.jTextFieldtelefono.setText(cli.getTelefono());
+        this.jTextFielddireccion.setText(cli.getDomicilio());
+        this.jTextFielddd.setText(String.valueOf(cli.getFechaNacimiento().getDay()));
+        this.jTextFieldmm.setText(String.valueOf(cli.getFechaNacimiento().getMonth()));
+        this.jTextFieldaaaa.setText(String.valueOf(cli.getFechaNacimiento().getYear()));
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -274,9 +261,9 @@ public class ModificarCliente extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jTextFieldnombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldnombre1ActionPerformed
+    private void jTextFieldapellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldapellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldnombre1ActionPerformed
+    }//GEN-LAST:event_jTextFieldapellidoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -325,13 +312,13 @@ public class ModificarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextFieldaaaa;
+    private javax.swing.JTextField jTextFieldapellido;
     private javax.swing.JTextField jTextFielddd;
     private javax.swing.JTextField jTextFielddireccion;
     private javax.swing.JTextField jTextFielddni;
+    private javax.swing.JTextField jTextFieldmail;
     private javax.swing.JTextField jTextFieldmm;
     private javax.swing.JTextField jTextFieldnombre;
-    private javax.swing.JTextField jTextFieldnombre1;
     private javax.swing.JTextField jTextFieldtelefono;
-    private javax.swing.JTextField jTextFieldtelefono1;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,12 +1,8 @@
 package com.tpfinal.vistas;
 
 import com.tpfinal.DAO.ClienteDAO;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import com.tpfinal.modelo.Cliente;
+import java.util.Date;
 
 public class AltaCliente extends javax.swing.JFrame {
 
@@ -127,6 +123,11 @@ public class AltaCliente extends javax.swing.JFrame {
 
         jTextFieldTelefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextFieldTelefono.setToolTipText("");
+        jTextFieldTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTelefonoActionPerformed(evt);
+            }
+        });
 
         jTextFieldMail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextFieldMail.setToolTipText("");
@@ -243,9 +244,11 @@ public class AltaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldApellidoActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-
-        Cliente a = new Cliente();
-        a.cliente(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDNI.getText(), jTextFieldTelefono.getText(), jTextFieldDomicilio.getText(), jTextFieldDD.getText(), jTextFieldMM.getText(), jTextFieldAAAA.getText(), jTextFieldMail.getText());
+        int year = Integer.parseInt(jTextFieldAAAA.getText());
+        int month = Integer.parseInt(jTextFieldMM.getText());
+        int day = Integer.parseInt(jTextFieldDD.getText());
+        Date date = new Date(year, month, day);
+        Cliente a = new Cliente(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDNI.getText(), jTextFieldTelefono.getText(), jTextFieldDomicilio.getText(), date, jTextFieldMail.getText());
         ClienteDAO c = new ClienteDAO();
         c.guardaCliente(a);
         jTextFieldNombre.setText("");
@@ -259,6 +262,10 @@ public class AltaCliente extends javax.swing.JFrame {
         jTextFieldDomicilio.setText("");
 
     }//GEN-LAST:event_GuardarActionPerformed
+
+    private void jTextFieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTelefonoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,15 +283,12 @@ public class AltaCliente extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AltaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AltaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AltaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AltaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        
         //</editor-fold>
         //</editor-fold>
 

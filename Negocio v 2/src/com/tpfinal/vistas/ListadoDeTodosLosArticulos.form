@@ -87,9 +87,9 @@
                 <Column editable="true" title="Nombre" type="java.lang.Object"/>
                 <Column editable="true" title="Marca" type="java.lang.Object"/>
                 <Column editable="true" title="Precio de Venta" type="java.lang.Object"/>
-                <Column editable="true" title="IVA" type="java.lang.Object"/>
+                <Column editable="false" title="Descripcion" type="java.lang.Object"/>
                 <Column editable="true" title="Stock" type="java.lang.Object"/>
-                <Column editable="true" title="id_producto" type="java.lang.Object"/>
+                <Column editable="false" title="id_producto" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

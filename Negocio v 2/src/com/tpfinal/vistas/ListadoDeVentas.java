@@ -5,22 +5,17 @@
  */
 package com.tpfinal.vistas;
 
+import com.tpfinal.DAO.VentaDAO;
+import com.tpfinal.modelo.Articulo;
+import com.tpfinal.modelo.Venta;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Set;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Agustin
- */
 public class ListadoDeVentas extends javax.swing.JFrame {
 
-    Connection con;
-    PreparedStatement s;
-    ResultSet r;
-    ResultSetMetaData rsm;
-    DefaultTableModel dtm;
 
     /**
      * Creates new form ListadoDeVentas
@@ -70,7 +65,7 @@ public class ListadoDeVentas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID de la Venta", "DNI del Comprador", "Nombre del Producto", "Precio", "Dia", "Mes", "Año"
+                "ID de la Venta", "DNI del Comprador", "Precio", "Fecha", "Nombre del Producto"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -137,41 +132,27 @@ public class ListadoDeVentas extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int total = 0;
         try {
-            String elid;
-            String url = "jdbc:sqlserver://Agustin-PC:1433;databaseName=Kiosco";
-
-            String user = "usuario_java";
-            String clave = "123";
-
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection(url, user, clave);
-
-            s = con.prepareStatement("select id_venta, DNI, Nombre, Precio, Dia, Mes, Año from Venta WHERE id_venta = " + jTextField2.getText() + "");
-            r = s.executeQuery();
-            rsm = r.getMetaData();
-            ArrayList<Object[]> data = new ArrayList<>();
-            while (r.next()) {
-
-                total = total + Integer.parseInt(r.getString(4));
-//            elid=(r.getString(8));
-                Object[] rows = new Object[rsm.getColumnCount()];
-                for (int i = 0; i < rows.length; i++) {
-                    rows[i] = r.getObject(i + 1);
-                    //                jTextField3.setText(elid);
-                }
-                data.add(rows);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            Object[] rows = new Object[5];
+            VentaDAO VDao = new VentaDAO();
+            ArrayList<Venta> ventas = VDao.obtenListaVenta();
+                           
+            for (Venta venta : ventas) {
+                rows[0] = venta.getIdVenta();
+                rows[1] = venta.getDni();
+                rows[2] = venta.getMonto();
+                total += venta.getMonto();
+                rows[3] = venta.getFechaVenta();
+                Set<Articulo> articulos = venta.getArticulos();
+                StringBuilder sb = new StringBuilder(articulos.toString());
+                rows[4] = sb;    
+                model.addRow(rows);
             }
-            dtm = (DefaultTableModel) this.jTable1.getModel();
-            for (int i = 0; i < data.size(); i++) {
-                dtm.addRow(data.get(i));
-            }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-
-       /// esto sumara y mostrara el total:
-        String totall = Integer.toString(total);
-        jTextField3.setText(totall);
+        String sumaTotal = Integer.toString(total);
+        jTextField3.setText(sumaTotal);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
