@@ -5,15 +5,15 @@ import java.util.Date;
 public class Empleado {
 
     private int idEmpleado;
-    private String Nombre;
-    private String Apellido;
-    private String Domicilio;
-    private String Mail;
+    private String nombre;
+    private String apellido;
+    private String domicilio;
+    private String mail;
     private Date fechaNacimiento;
-    private int Telefono;
-    private boolean Actividad;
-    private boolean Administrador;
-    private String Contraseña;
+    private int telefono;
+    private boolean actividad;
+    private boolean administrador;
+    private String contraseña;
     private int DNI;
 
     public Empleado() {
@@ -21,11 +21,11 @@ public class Empleado {
     }
 
     public boolean isAdministrador() {
-        return Administrador;
+        return administrador;
     }
 
-    public void setAdministrador(boolean Administrador) {
-        this.Administrador = Administrador;
+    public void setAdministrador(boolean administrador) {
+        this.administrador = administrador;
     }
 
     public void setFechaNacimiento(Date fechaNacimiento) {
@@ -45,17 +45,17 @@ public class Empleado {
     }
 
     public String getContraseña() {
-        return Contraseña;
+        return contraseña;
     }
 
-    public void setContraseña(String Contraseña) {
-        this.Contraseña = Contraseña;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
-    public Empleado(boolean Actividad) {
-        this.Actividad = Actividad;
-        this.Administrador = false;
-        this.Contraseña = "asd";
+    public Empleado(boolean actividad) {
+        this.actividad = actividad;
+        this.administrador = false;
+        this.contraseña = "asd";
     }
 
     public int getIdEmpleado() {
@@ -63,64 +63,64 @@ public class Empleado {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public int getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
-    public void setTelefono(int Telefono) {
-        this.Telefono = Telefono;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
     public String getDomicilio() {
-        return Domicilio;
+        return domicilio;
     }
 
     public String getMail() {
-        return Mail;
+        return mail;
     }
 
     public void setIdEmpleado(int idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public void setDomicilio(String Domicilio) {
-        this.Domicilio = Domicilio;
+        this.domicilio = Domicilio;
     }
 
     public void setMail(String Mail) {
-        this.Mail = Mail;
+        this.mail = Mail;
     }
 
     public boolean isActividad() {
-        return Actividad;
+        return actividad;
     }
 
     public void setActividad(boolean Actividad) {
-        this.Actividad = Actividad;
+        this.actividad = Actividad;
     }
 
     public void setEmpleado(String Nombre, String Apellido, String Domicilio, String Mail, int DNI, Date fechaNacimiento, int Telefono) {
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Domicilio = Domicilio;
+        this.nombre = Nombre;
+        this.apellido = Apellido;
+        this.domicilio = Domicilio;
         this.DNI = DNI;
-        this.Mail = Mail;
+        this.mail = Mail;
         this.fechaNacimiento = fechaNacimiento;
-        this.Telefono = Telefono;
+        this.telefono = Telefono;
     }
 }

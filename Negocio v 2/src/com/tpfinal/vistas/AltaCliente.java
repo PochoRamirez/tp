@@ -243,7 +243,7 @@ public class AltaCliente extends javax.swing.JFrame {
         Date date = new Date(year, month, day);
         Cliente a = new Cliente(jTextFieldNombre.getText(), jTextFieldApellido.getText(), jTextFieldDNI.getText(), jTextFieldTelefono.getText(), jTextFieldDomicilio.getText(), date, jTextFieldMail.getText());
         ClienteDAO c = new ClienteDAO();
-        c.guardaCliente(a);
+        c.saveCliente(a);
         jTextFieldNombre.setText("");
         jTextFieldApellido.setText("");
         jTextFieldDNI.setText("");

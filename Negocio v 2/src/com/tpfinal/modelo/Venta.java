@@ -8,7 +8,7 @@ public class Venta {
 
     private int idVenta;
     private int dni;
-    private Set<Articulo> articulos = new HashSet<Articulo>();
+    private Set<Articulo> articulos = new HashSet<>();
     private int idEmpleado;
     private int idCliente;
     private int monto;

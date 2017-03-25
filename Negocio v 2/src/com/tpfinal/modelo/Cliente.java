@@ -6,12 +6,12 @@ public class Cliente {
 
     private int idCliente;
     private String DNI;
-    private String Nombre;
-    private String Apellido;
-    private String Telefono;
-    private String Domicilio;
+    private String nombre;
+    private String apellido;
+    private String telefono;
+    private String domicilio;
     private Date fechaNacimiento;
-    private String Mail;
+    private String mail;
     private Date fechaAlta;
 
     public Cliente() {
@@ -46,57 +46,57 @@ public class Cliente {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
     public String getDomicilio() {
-        return Domicilio;
+        return domicilio;
     }
 
     public String getMail() {
-        return Mail;
+        return mail;
     }
 
     public void setDNI(String DNI) {
         this.DNI = DNI;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public void setDomicilio(String Domicilio) {
-        this.Domicilio = Domicilio;
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
 
-    public void setMail(String Mail) {
-        this.Mail = Mail;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
-    public Cliente(String Nombre, String Apellido, String DNI, String Telefono, String Domicilio, Date fechaNacimiento, String Mail) {
+    public Cliente(String nombre, String apellido, String DNI, String telefono, String domicilio, Date fechaNacimiento, String mail) {
         this.DNI = DNI;
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Telefono = Telefono;
-        this.Domicilio = Domicilio;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.domicilio = domicilio;
         this.fechaNacimiento = fechaNacimiento;
-        this.Mail = Mail;
+        this.mail = mail;
         this.fechaAlta = new Date();
     }
 }

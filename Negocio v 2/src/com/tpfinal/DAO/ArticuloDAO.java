@@ -17,7 +17,7 @@ public class ArticuloDAO {
             sesion.save(articulo);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         } 
     }
 
@@ -28,7 +28,7 @@ public class ArticuloDAO {
             sesion.update(articulo);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
     }
 
@@ -40,7 +40,7 @@ public class ArticuloDAO {
             sesion.delete(articulo);
             sesion.getTransaction().commit();
         } catch (HibernateException he) { 
-             HibernateUtil.manejaExcepcion(he);
+             HibernateUtil.handleException(he);
         }
     }
     
@@ -52,7 +52,7 @@ public class ArticuloDAO {
             sesion.delete(articulo);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
-             HibernateUtil.manejaExcepcion(he);
+             HibernateUtil.handleException(he);
         }
     }
 
@@ -64,7 +64,7 @@ public class ArticuloDAO {
             articulo = (Articulo) sesion.get(Articulo.class, NumArticulo);
             sesion.close();
         } catch (HibernateException he){
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
         return articulo;
     }
@@ -78,7 +78,7 @@ public class ArticuloDAO {
             listaArticulo = (ArrayList<Articulo>)sesion.createQuery("from Articulo");
             sesion.close();
         } catch (HibernateException he){
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
         return listaArticulo;
     }

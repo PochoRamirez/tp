@@ -122,7 +122,7 @@ public class ListadoDeTodosLosClientes extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             Object[] rows = new Object[6];
             ClienteDAO Cdao = new ClienteDAO();
-            ArrayList<Cliente> clientes = Cdao.obtenListaCliente();
+            ArrayList<Cliente> clientes = Cdao.getListaCliente();
                            
             for (Cliente cliente : clientes) {
                 rows[0] = cliente.getNombre();
@@ -146,7 +146,7 @@ public class ListadoDeTodosLosClientes extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         ClienteDAO cDao = new ClienteDAO();
-        cDao.BorrarClienteByDNI(jTextFieldDNI.getText());
+        cDao.deleteClienteByDNI(jTextFieldDNI.getText());
 
 
     }//GEN-LAST:event_jButton3ActionPerformed

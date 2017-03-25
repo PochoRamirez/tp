@@ -21,7 +21,7 @@ public class EmpleadoDAO {
             sesion.save(empleado);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
     }
 
@@ -33,7 +33,7 @@ public class EmpleadoDAO {
             sesion.update(empleado);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
     }
 
@@ -44,7 +44,7 @@ public class EmpleadoDAO {
             sesion.delete(empleado);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
     }
 
@@ -56,7 +56,7 @@ public class EmpleadoDAO {
             sesion.delete(empleado);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
     }
     
@@ -68,7 +68,7 @@ public class EmpleadoDAO {
             empleado = (Empleado) sesion.get(Empleado.class, Integer.parseInt(idEmpleado));
             sesion.close();
         } catch (HibernateException he){
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
         return empleado;
     }
@@ -83,7 +83,7 @@ public class EmpleadoDAO {
             listaEmpleado = (ArrayList<Empleado>) sesion.createQuery("from Empleado").list();
             sesion.close();
         } catch (HibernateException he){
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
         return listaEmpleado;
     }

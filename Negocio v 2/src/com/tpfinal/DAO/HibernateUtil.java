@@ -24,7 +24,7 @@ public class HibernateUtil {
         return sessionFactory;
     }
     
-    public static void manejaExcepcion(HibernateException he) throws HibernateException, IllegalStateException {
-        throw new HibernateException("Ocurrió un error en la capa de acceso a datos" + he.toString());
+    public static void handleException(HibernateException he) throws HibernateException, IllegalStateException {
+        throw new HibernateException("Ocurrió un error en la capa DAO " + he.toString());
     }
 }

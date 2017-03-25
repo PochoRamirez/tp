@@ -231,7 +231,7 @@ public class ModificarCliente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Date date = new Date(Integer.parseInt(jTextFieldaaaa.getText()), Integer.parseInt(jTextFieldmm.getText()),Integer.parseInt(jTextFielddd.getText()));
-        cDao.ModificarCiente(jTextFieldnombre.getText(), jTextFieldapellido.getText(),jTextFielddni.getText(), jTextFieldtelefono.getText(), jTextFielddireccion.getText(), date, jTextFieldmail.getText());
+        cDao.updateCliente(jTextFieldnombre.getText(), jTextFieldapellido.getText(),jTextFielddni.getText(), jTextFieldtelefono.getText(), jTextFielddireccion.getText(), date, jTextFieldmail.getText());
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -245,7 +245,7 @@ public class ModificarCliente extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        Cliente cli = cDao.obtenCliente(jTextFielddni.getText());
+        Cliente cli = cDao.getCliente(jTextFielddni.getText());
 
         this.jTextFieldnombre.setText(cli.getNombre());
         this.jTextFieldtelefono.setText(cli.getTelefono());

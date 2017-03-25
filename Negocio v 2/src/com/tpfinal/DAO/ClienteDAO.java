@@ -12,40 +12,40 @@ public class ClienteDAO {
 
     SessionFactory sesionFactory = HibernateUtil.getSessionFactory();
 
-    public void guardaCliente(Cliente cliente) throws HibernateException {
+    public void saveCliente(Cliente cliente) throws HibernateException {
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
             sesion.save(cliente);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }  
     }
 
-    public void actualizaCliente(Cliente cliente) throws HibernateException {
+    public void updateCliente(Cliente cliente) throws HibernateException {
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
             sesion.update(cliente);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
     }
 
-    public void eliminaCliente(Cliente cliente) throws HibernateException, IllegalStateException {
+    public void deleteCliente(Cliente cliente) throws HibernateException, IllegalStateException {
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
             sesion.delete(cliente);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
     }
 
-    public Cliente obtenCliente(String NumCliente) throws HibernateException {
+    public Cliente getCliente(String NumCliente) throws HibernateException {
         Cliente cli = new Cliente();
         try {
             Session sesion = sesionFactory.getCurrentSession();
@@ -53,13 +53,13 @@ public class ClienteDAO {
             cli = (Cliente) sesion.get(Cliente.class, NumCliente);
             sesion.close();
         }catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
         return cli;
     }
 
     @SuppressWarnings("unchecked")
-    public ArrayList<Cliente> obtenListaCliente() throws HibernateException {
+    public ArrayList<Cliente> getListaCliente() throws HibernateException {
         ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
         try {
             Session sesion = sesionFactory.getCurrentSession();
@@ -67,12 +67,12 @@ public class ClienteDAO {
             listaCliente = (ArrayList<Cliente>) sesion.createQuery("from Cliente").list();
             sesion.close();
         }catch (HibernateException he){
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
         return listaCliente;
     }
 
-    public void BorrarClienteByDNI(String dni) {
+    public void deleteClienteByDNI(String dni) {
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
@@ -81,12 +81,12 @@ public class ClienteDAO {
             sesion.getTransaction().commit();
             JOptionPane.showMessageDialog(null, "Datos borrados correctamente");
         } catch (HibernateException he) {
-            HibernateUtil.manejaExcepcion(he);
+            HibernateUtil.handleException(he);
         }
     }
 
-    public void ModificarCiente(String Nombre, String Apellido, String DNI, String Telefono, String Domicilio, Date fechaNacimiento, String Mail) {
-        Cliente cli = new Cliente(Nombre, Apellido, DNI, Telefono, Domicilio, fechaNacimiento, Mail);
+    public void updateCliente(String nombre, String apellido, String DNI, String telefono, String domicilio, Date fechaNacimiento, String mail) {
+        Cliente cli = new Cliente(nombre, apellido, DNI, telefono, domicilio, fechaNacimiento, mail);
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();

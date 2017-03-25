@@ -7,22 +7,22 @@ import java.util.Set;
 public class Articulo {
 
     private int idArticulo;
-    private String Nombre;
-    private String Marca;
-    private float Precio;
-    private int Stock;
-    private String Observaciones;
-    private String Descripcion;
-    private String Actividad;
+    private String nombre;
+    private String marca;
+    private float precio;
+    private int stock;
+    private String observaciones;
+    private String descripcion;
+    private String actividad;
     private Date fechaAlta;
 
-    private Set<Venta> ventas = new HashSet<Venta>();
+    private Set<Venta> ventas = new HashSet<>();
 
     public Articulo() {
     }
     
-    public Articulo(String Nombre, String Marca, String Precio, int Stock, String Observaciones, String Descripcion, String Actividad) {
-        this.setArticulo(Nombre, Marca, Precio, Stock, Observaciones, Descripcion, Actividad);
+    public Articulo(String nombre, String marca, String precio, int stock, String observaciones, String descripcion, String actividad) {
+        this.setArticulo(nombre, marca, precio, stock, observaciones, descripcion, actividad);     
     }
 
     public void setIdArticulo(int idArticulo) {
@@ -50,69 +50,69 @@ public class Articulo {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public String getMarca() {
-        return Marca;
+        return marca;
     }
 
     public float getPrecio() {
-        return Precio;
+        return precio;
     }
 
     public int getStock() {
-        return Stock;
+        return stock;
     }
 
     public String getObservaciones() {
-        return Observaciones;
+        return observaciones;
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     public String getActividad() {
-        return Actividad;
+        return actividad;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setMarca(String Marca) {
-        this.Marca = Marca;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public void setPrecio(float Precio) {
-        this.Precio = Precio;
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
-    public void setStock(int Stock) {
-        this.Stock = Stock;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
-    public void setObservaciones(String Observaciones) {
-        this.Observaciones = Observaciones;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public void setActividad(String Actividad) {
-        this.Actividad = Actividad;
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
     }
 
-    public void setArticulo(String Nombre, String Marca, String Precio, int Stock, String Observaciones, String Descripcion, String Actividad) {
-        this.Nombre = Nombre;
-        this.Marca = Marca;
-        this.Precio = (float) Integer.parseInt(Precio);
-        this.Stock = Stock;
-        this.Observaciones = Observaciones;
-        this.Descripcion = Descripcion;
-        this.Actividad = Actividad;
+    public void setArticulo(String nombre, String marca, String precio, int stock, String observaciones, String descripcion, String actividad) {
+        this.nombre = nombre;
+        this.marca = marca;
+        this.precio = (float) Integer.parseInt(precio);
+        this.stock = stock;
+        this.observaciones = observaciones;
+        this.descripcion = descripcion;
+        this.actividad = actividad;
         this.fechaAlta = new Date();
     }
 
