@@ -110,7 +110,7 @@
                   <Component id="jButton4" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="jButton8" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jButton10" min="-2" pref="61" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
