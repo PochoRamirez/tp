@@ -14,20 +14,19 @@ public class VentaDAO {
         String NumVenta = "0";
 
         try {
-            Session sesion = sesionFactory.openSession();
+            Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
             NumVenta = (String) sesion.save(venta);
             sesion.getTransaction().commit();
         }  catch (HibernateException he){
             HibernateUtil.handleException(he);
         }
-
         return NumVenta;
     }
 
     public void actualizaVenta(Venta venta) throws HibernateException {
         try {
-            Session sesion = sesionFactory.openSession();
+            Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
             sesion.update(venta);
             sesion.getTransaction().commit();
@@ -38,7 +37,7 @@ public class VentaDAO {
 
     public void eliminaVenta(Venta venta) throws HibernateException, IllegalStateException {
         try {
-            Session sesion = sesionFactory.openSession();
+            Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
             sesion.delete(venta);
             sesion.getTransaction().commit();
@@ -50,10 +49,10 @@ public class VentaDAO {
     public Venta obtenVenta(String NumVenta) throws HibernateException {
         Venta venta = null;
         try {
-            Session sesion = sesionFactory.openSession();
+            Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
-
             venta = (Venta) sesion.get(Venta.class, NumVenta);
+            sesion.close();
         } catch (HibernateException he){
             HibernateUtil.handleException(he);
         }
@@ -63,11 +62,12 @@ public class VentaDAO {
 
     @SuppressWarnings("unchecked")
     public ArrayList<Venta> obtenListaVenta() throws HibernateException {
-        ArrayList<Venta> listaVenta = new ArrayList<Venta>();
+        ArrayList<Venta> listaVenta = new ArrayList<>();
         try {
-            Session sesion = sesionFactory.openSession();
+            Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
             listaVenta = (ArrayList<Venta>) sesion.createQuery("from Venta").list();
+            sesion.close();
         } catch (HibernateException he){
             HibernateUtil.handleException(he);
         }

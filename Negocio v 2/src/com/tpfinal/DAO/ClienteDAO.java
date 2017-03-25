@@ -45,12 +45,12 @@ public class ClienteDAO {
         }
     }
 
-    public Cliente getCliente(String NumCliente) throws HibernateException {
+    public Cliente getCliente(String dni) throws HibernateException {
         Cliente cli = new Cliente();
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
-            cli = (Cliente) sesion.get(Cliente.class, NumCliente);
+            cli = (Cliente) sesion.createQuery("from Cliente where DNI="+dni).uniqueResult();
             sesion.close();
         }catch (HibernateException he) {
             HibernateUtil.handleException(he);

@@ -21,7 +21,7 @@ public class Articulo {
     public Articulo() {
     }
     
-    public Articulo(String nombre, String marca, String precio, int stock, String observaciones, String descripcion, String actividad) {
+    public Articulo(String nombre, String marca, float precio, int stock, String observaciones, String descripcion, String actividad) {
         this.setArticulo(nombre, marca, precio, stock, observaciones, descripcion, actividad);     
     }
 
@@ -105,10 +105,10 @@ public class Articulo {
         this.actividad = actividad;
     }
 
-    public void setArticulo(String nombre, String marca, String precio, int stock, String observaciones, String descripcion, String actividad) {
+    public void setArticulo(String nombre, String marca, float precio, int stock, String observaciones, String descripcion, String actividad) {
         this.nombre = nombre;
         this.marca = marca;
-        this.precio = (float) Integer.parseInt(precio);
+        this.precio = precio;
         this.stock = stock;
         this.observaciones = observaciones;
         this.descripcion = descripcion;

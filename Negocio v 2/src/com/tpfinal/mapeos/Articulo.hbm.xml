@@ -6,7 +6,7 @@
         </id>
         <property name="Nombre" type="string" column="nombre" />
         <property name="Marca" type="string" column="marca" />
-        <property name="Precio" type="integer" column="precio"/>
+        <property name="Precio" type="float" column="precio"/>
         <property name="Stock" type="integer" column="stock"/>
         <property name="Observaciones" type="string" column="observaciones"/>
         <property name="Descripcion" type="string" column="descripcion"/>

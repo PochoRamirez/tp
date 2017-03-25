@@ -2,6 +2,7 @@ package com.tpfinal.DAO;
 
 import com.tpfinal.modelo.Articulo;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -48,9 +49,10 @@ public class ArticuloDAO {
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
-            Articulo articulo = (Articulo) sesion.get(Articulo.class, id);
+            Articulo articulo = (Articulo) sesion.get(Articulo.class, Integer.parseInt(id));
             sesion.delete(articulo);
             sesion.getTransaction().commit();
+            JOptionPane.showMessageDialog(null, "Articulo eliminado correctamente");
         } catch (HibernateException he) {
              HibernateUtil.handleException(he);
         }
@@ -75,7 +77,7 @@ public class ArticuloDAO {
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
-            listaArticulo = (ArrayList<Articulo>)sesion.createQuery("from Articulo");
+            listaArticulo = (ArrayList<Articulo>)sesion.createQuery("from Articulo").list();
             sesion.close();
         } catch (HibernateException he){
             HibernateUtil.handleException(he);

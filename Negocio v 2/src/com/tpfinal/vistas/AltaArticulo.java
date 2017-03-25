@@ -230,7 +230,7 @@ public class AltaArticulo extends javax.swing.JFrame {
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
  
-        Articulo p = new Articulo(jTextFieldNombre.getText(), jTextFieldMarca.getText(), jTextFieldPC.getText(),Integer.parseInt(jTextFieldStock.getText()), jTextFieldDescripcion.getText(), jTextFieldObservaciones.getText(), jTextFieldActividad.getText());
+        Articulo p = new Articulo(jTextFieldNombre.getText(), jTextFieldMarca.getText(), Float.parseFloat(jTextFieldPC.getText()),Integer.parseInt(jTextFieldStock.getText()), jTextFieldDescripcion.getText(), jTextFieldObservaciones.getText(), jTextFieldActividad.getText());
         ArticuloDAO a = new ArticuloDAO();
         a.guardaArticulo(p);
         jTextFieldNombre.setText("");
