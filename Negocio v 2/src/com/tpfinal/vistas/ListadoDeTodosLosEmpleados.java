@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.tpfinal.vistas;
 
 import com.tpfinal.DAO.EmpleadoDAO;
 import javax.swing.table.DefaultTableModel;
-import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 import com.tpfinal.modelo.Empleado;
 

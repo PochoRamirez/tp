@@ -9,7 +9,6 @@ import com.tpfinal.DAO.VentaDAO;
 import com.tpfinal.modelo.Articulo;
 import com.tpfinal.modelo.Venta;
 import javax.swing.table.DefaultTableModel;
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.Set;
 import javax.swing.JOptionPane;

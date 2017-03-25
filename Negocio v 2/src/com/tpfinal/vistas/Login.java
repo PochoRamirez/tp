@@ -1,21 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.tpfinal.vistas;
 
-import javax.swing.table.DefaultTableModel;
-import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
-
-    Connection con;
-    PreparedStatement s;
-    ResultSet r;
-    ResultSetMetaData rsm;
-    DefaultTableModel dtm;
 
     public Login() {
         initComponents();

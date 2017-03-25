@@ -18,7 +18,6 @@ public class VentaDAO {
             sesion.beginTransaction();
             NumVenta = (String) sesion.save(venta);
             sesion.getTransaction().commit();
-
         }  catch (HibernateException he){
             HibernateUtil.manejaExcepcion(he);
         }
@@ -32,7 +31,7 @@ public class VentaDAO {
             sesion.beginTransaction();
             sesion.update(venta);
             sesion.getTransaction().commit();
-        }  catch (HibernateException he){
+        }catch (HibernateException he){
             HibernateUtil.manejaExcepcion(he);
         }
     }

@@ -7,7 +7,6 @@ package com.tpfinal.vistas;
 
 import com.tpfinal.DAO.ArticuloDAO;
 import javax.swing.table.DefaultTableModel;
-import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.tpfinal.modelo.Articulo;

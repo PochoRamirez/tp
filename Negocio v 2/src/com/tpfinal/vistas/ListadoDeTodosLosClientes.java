@@ -5,13 +5,9 @@
  */
 package com.tpfinal.vistas;
 
-import com.tpfinal.DAO.ArticuloDAO;
 import com.tpfinal.DAO.ClienteDAO;
-import com.tpfinal.modelo.Articulo;
 import javax.swing.table.DefaultTableModel;
-import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 import com.tpfinal.modelo.Cliente;
 

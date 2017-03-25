@@ -7,9 +7,6 @@ import java.util.Date;
 
 public class AltaEmpleado extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AltaCliente
-     */
     public AltaEmpleado() {
         initComponents();
     }
