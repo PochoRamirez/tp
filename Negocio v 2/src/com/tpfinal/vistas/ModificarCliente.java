@@ -231,7 +231,10 @@ public class ModificarCliente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Date date = new Date(Integer.parseInt(jTextFieldaaaa.getText()), Integer.parseInt(jTextFieldmm.getText()),Integer.parseInt(jTextFielddd.getText()));
-        cDao.updateCliente(jTextFieldnombre.getText(), jTextFieldapellido.getText(),jTextFielddni.getText(), jTextFieldtelefono.getText(), jTextFielddireccion.getText(), date, jTextFieldmail.getText());
+        Cliente cli = cDao.getCliente(jTextFielddni.getText());
+        Cliente cliUpdated= new Cliente(jTextFieldnombre.getText(), jTextFieldapellido.getText(),jTextFielddni.getText(), jTextFieldtelefono.getText(), jTextFielddireccion.getText(), date, jTextFieldmail.getText());
+        cliUpdated.setIdCliente(Integer.parseInt(jTextFielddni.getText()));
+        cDao.updateCliente(cliUpdated);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

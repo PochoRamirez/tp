@@ -21,6 +21,11 @@ public class Articulo {
     public Articulo() {
     }
     
+    public Articulo(int id, String nombre, String marca, float precio, int stock, String observaciones, String descripcion, String actividad) {
+        this.idArticulo = id;
+        this.setArticulo(nombre, marca, precio, stock, observaciones, descripcion, actividad);     
+    }
+    
     public Articulo(String nombre, String marca, float precio, int stock, String observaciones, String descripcion, String actividad) {
         this.setArticulo(nombre, marca, precio, stock, observaciones, descripcion, actividad);     
     }

@@ -135,7 +135,7 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
                 rows[0] = empleado.getNombre();
                 rows[1] = empleado.getTelefono();
                 rows[2] = empleado.getDomicilio();
-                rows[3] = empleado.getDNI();
+                rows[3] = empleado.getDni();
                 rows[4] = empleado.getFechaNacimiento();
                 model.addRow(rows);
             }     
@@ -152,7 +152,7 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         EmpleadoDAO Edao = new EmpleadoDAO();
-        Edao.eliminarEmpleadoById(jTextFieldDNI.getText());
+        Edao.eliminarEmpleadoByDni(jTextFieldDNI.getText());
 
 
     }//GEN-LAST:event_jButton3ActionPerformed

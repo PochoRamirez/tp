@@ -261,7 +261,7 @@ public class ModificarArticulo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Articulo a = new Articulo(jTextFieldnombre.getText(), jTextFieldmarca.getText(), Float.parseFloat(jTextFieldprecio.getText()), Integer.parseInt(jTextFieldstock.getText()), jTextFieldObservaciones.getText(), jTextFieldDescripcion.getText(), jTextFieldActividad.getText());
+        Articulo a = new Articulo(Integer.parseInt(jTextFieldId.getText()), jTextFieldnombre.getText(), jTextFieldmarca.getText(), Float.parseFloat(jTextFieldprecio.getText()), Integer.parseInt(jTextFieldstock.getText()), jTextFieldObservaciones.getText(), jTextFieldDescripcion.getText(), jTextFieldActividad.getText());
         ADao.actualizaArticulo(a);
     }//GEN-LAST:event_jButton1ActionPerformed
 

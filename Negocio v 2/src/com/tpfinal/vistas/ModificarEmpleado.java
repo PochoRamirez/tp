@@ -236,9 +236,11 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Empleado e = new Empleado(true);
+        Empleado eUpdated = new Empleado(true);
+        e = EDao.obtenEmpleado(jTextFielddni.getText());
         Date date = new Date(Integer.parseInt(jTextFieldaaaa.getText()), Integer.parseInt(jTextFieldmm.getText()),Integer.parseInt(jTextFielddd.getText()));
-        e.setEmpleado(jTextFieldnombre.getText(), jTextFieldapellido.getText(), jTextFielddireccion.getText(), jTextFieldmail.getText(), Integer.parseInt(jTextFielddni.getText()), date, Integer.parseInt(jTextFieldtelefono.getText()));
-        EDao.actualizaEmpleado(e);
+        eUpdated.setEmpleadoWithID(e.getIdEmpleado(), jTextFieldnombre.getText(), jTextFieldapellido.getText(), jTextFielddireccion.getText(), jTextFieldmail.getText(), Integer.parseInt(jTextFielddni.getText()), date, Integer.parseInt(jTextFieldtelefono.getText()));
+        EDao.actualizaEmpleado(eUpdated);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

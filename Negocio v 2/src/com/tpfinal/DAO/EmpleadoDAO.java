@@ -48,11 +48,11 @@ public class EmpleadoDAO {
         }
     }
 
-    public void eliminarEmpleadoById(String dni) throws HibernateException {
+    public void eliminarEmpleadoByDni(String dni) throws HibernateException {
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
-            Empleado empleado = (Empleado) sesion.createQuery("from Empleado where idEmpleado="+dni);
+            Empleado empleado = (Empleado) sesion.createQuery("from Empleado where dni="+dni);
             sesion.delete(empleado);
             sesion.getTransaction().commit();
         } catch (HibernateException he) {
@@ -60,12 +60,12 @@ public class EmpleadoDAO {
         }
     }
     
-    public Empleado obtenEmpleado(String idEmpleado) throws HibernateException {
+    public Empleado obtenEmpleado(String dni) throws HibernateException {
         Empleado empleado = new Empleado();
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
-            empleado = (Empleado) sesion.get(Empleado.class, Integer.parseInt(idEmpleado));
+            empleado = (Empleado) sesion.createQuery("from Empleado where dni="+dni).uniqueResult();
             sesion.close();
         } catch (HibernateException he){
             HibernateUtil.handleException(he);

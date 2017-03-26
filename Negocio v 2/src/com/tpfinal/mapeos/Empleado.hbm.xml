@@ -6,9 +6,10 @@
         </id>
         <property name="Administrador" type="boolean" column="administrador" />
         <property name="Contraseña" type="string" column="contraseña" />
+        <property name="Dni" type="integer" column="dni" />
         <property name="Nombre" type="string" column="nombre" />
         <property name="Apellido" type="string" column="apellido" />
-        <property name="Domicilio" type="string" column="Domicilio"/>
+        <property name="Domicilio" type="string" column="domicilio"/>
         <property name="Mail" type="string" column="mail"/>
         <property name="fechaNacimiento" type="date" column="fechaNacimiento"/>
         <property name="Actividad" type="boolean" column="actividad"/>

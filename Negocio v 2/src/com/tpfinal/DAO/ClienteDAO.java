@@ -2,7 +2,6 @@ package com.tpfinal.DAO;
 
 import com.tpfinal.modelo.Cliente;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -82,19 +81,6 @@ public class ClienteDAO {
             JOptionPane.showMessageDialog(null, "Datos borrados correctamente");
         } catch (HibernateException he) {
             HibernateUtil.handleException(he);
-        }
-    }
-
-    public void updateCliente(String nombre, String apellido, String DNI, String telefono, String domicilio, Date fechaNacimiento, String mail) {
-        Cliente cli = new Cliente(nombre, apellido, DNI, telefono, domicilio, fechaNacimiento, mail);
-        try {
-            Session sesion = sesionFactory.getCurrentSession();
-            sesion.beginTransaction();
-            sesion.update(cli);
-            sesion.getTransaction().commit();
-            JOptionPane.showMessageDialog(null, "Datos Modificados correctamente");
-        } catch (HibernateException he) {
-            JOptionPane.showMessageDialog(null, he);
         }
     }
 }

@@ -14,7 +14,21 @@ public class Empleado {
     private boolean actividad;
     private boolean administrador;
     private String contraseña;
-    private int DNI;
+    private int dni;
+
+    public Empleado(int idEmpleado, String nombre, String apellido, String domicilio, String mail, Date fechaNacimiento, int telefono, boolean actividad, boolean administrador, String contraseña, int DNI) {
+        this.idEmpleado = idEmpleado;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.domicilio = domicilio;
+        this.mail = mail;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono;
+        this.actividad = actividad;
+        this.administrador = administrador;
+        this.contraseña = contraseña;
+        this.dni = DNI;
+    }
 
     public Empleado() {
 
@@ -32,16 +46,16 @@ public class Empleado {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public void setDNI(int DNI) {
-        this.DNI = DNI;
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public int getDNI() {
-        return DNI;
+    public int getDni() {
+        return dni;
     }
 
     public String getContraseña() {
@@ -118,9 +132,14 @@ public class Empleado {
         this.nombre = Nombre;
         this.apellido = Apellido;
         this.domicilio = Domicilio;
-        this.DNI = DNI;
+        this.dni = DNI;
         this.mail = Mail;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = Telefono;
+    }
+    
+    public void setEmpleadoWithID(int id,String nombre, String apellido, String domicilio, String mail, int DNI, Date fechaNacimiento, int telefono) {
+        this.setIdEmpleado(id);
+        this.setEmpleado(nombre, apellido, domicilio, mail, DNI, fechaNacimiento, telefono);   
     }
 }

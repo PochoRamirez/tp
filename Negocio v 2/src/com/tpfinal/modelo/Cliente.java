@@ -88,7 +88,7 @@ public class Cliente {
     public void setMail(String mail) {
         this.mail = mail;
     }
-
+    
     public Cliente(String nombre, String apellido, String DNI, String telefono, String domicilio, Date fechaNacimiento, String mail) {
         this.DNI = DNI;
         this.nombre = nombre;
