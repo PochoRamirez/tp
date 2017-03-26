@@ -1,19 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.tpfinal.vistas;
+package com.tpfinal.vistas.cliente;
 
-import com.tpfinal.DAO.EmpleadoDAO;
-import java.sql.*;
-import com.tpfinal.modelo.Empleado;
+import com.tpfinal.DAO.ClienteDAO;
+import com.tpfinal.modelo.Cliente;
+import java.util.Date;
 
-public class ModificarEmpleado extends javax.swing.JFrame {
+public class ModificarCliente extends javax.swing.JFrame {
 
-    EmpleadoDAO EDao = new EmpleadoDAO();
+    ClienteDAO cDao = new ClienteDAO();
     
-    public ModificarEmpleado() {
+    public ModificarCliente() {
         initComponents();
     }
 
@@ -235,12 +230,11 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Empleado e = new Empleado(true);
-        Empleado eUpdated = new Empleado(true);
-        e = EDao.obtenEmpleado(jTextFielddni.getText());
         Date date = new Date(Integer.parseInt(jTextFieldaaaa.getText()), Integer.parseInt(jTextFieldmm.getText()),Integer.parseInt(jTextFielddd.getText()));
-        eUpdated.setEmpleadoWithID(e.getIdEmpleado(), jTextFieldnombre.getText(), jTextFieldapellido.getText(), jTextFielddireccion.getText(), jTextFieldmail.getText(), Integer.parseInt(jTextFielddni.getText()), date, Integer.parseInt(jTextFieldtelefono.getText()));
-        EDao.actualizaEmpleado(eUpdated);
+        Cliente cli = cDao.getCliente(jTextFielddni.getText());
+        Cliente cliUpdated= new Cliente(jTextFieldnombre.getText(), jTextFieldapellido.getText(),jTextFielddni.getText(), jTextFieldtelefono.getText(), jTextFielddireccion.getText(), date, jTextFieldmail.getText());
+        cliUpdated.setIdCliente(Integer.parseInt(jTextFielddni.getText()));
+        cDao.updateCliente(cliUpdated);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -254,17 +248,14 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        Empleado e = new Empleado(true);
-        e = EDao.obtenEmpleado(jTextFielddni.getText());
+        Cliente cli = cDao.getCliente(jTextFielddni.getText());
 
-        this.jTextFieldnombre.setText(e.getNombre());
-        this.jTextFieldtelefono.setText(String.valueOf(e.getTelefono()));
-        this.jTextFieldapellido.setText(e.getApellido());
-        this.jTextFielddireccion.setText(e.getDomicilio());
-        this.jTextFieldmail.setText(e.getMail());
-        this.jTextFielddd.setText(String.valueOf(e.getFechaNacimiento().getDay()));
-        this.jTextFieldmm.setText(String.valueOf(e.getFechaNacimiento().getMonth()));
-        this.jTextFieldaaaa.setText(String.valueOf(e.getFechaNacimiento().getYear()));
+        this.jTextFieldnombre.setText(cli.getNombre());
+        this.jTextFieldtelefono.setText(cli.getTelefono());
+        this.jTextFielddireccion.setText(cli.getDomicilio());
+        this.jTextFielddd.setText(String.valueOf(cli.getFechaNacimiento().getDay()));
+        this.jTextFieldmm.setText(String.valueOf(cli.getFechaNacimiento().getMonth()));
+        this.jTextFieldaaaa.setText(String.valueOf(cli.getFechaNacimiento().getYear()));
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -291,23 +282,21 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarEmpleado().setVisible(true);
+                new ModificarCliente().setVisible(true);
             }
         });
     }

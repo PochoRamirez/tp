@@ -1,5 +1,6 @@
 package com.tpfinal.DAO;
 
+import com.tpfinal.utils.HibernateUtil;
 import com.tpfinal.modelo.Cliente;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

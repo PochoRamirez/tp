@@ -1,4 +1,4 @@
-package com.tpfinal.DAO;
+package com.tpfinal.utils;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;

@@ -1,14 +1,20 @@
-package com.tpfinal.vistas;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.tpfinal.vistas.cliente;
 
-import com.tpfinal.DAO.EmpleadoDAO;
+import com.tpfinal.DAO.ClienteDAO;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import com.tpfinal.modelo.Empleado;
+import com.tpfinal.modelo.Cliente;
 
-public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
+public class ListadoDeTodosLosClientes extends javax.swing.JFrame {
 
-    public ListadoDeTodosLosEmpleados() {
+
+    public ListadoDeTodosLosClientes() {
         initComponents();
     }
 
@@ -27,7 +33,7 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jTextFieldDNI = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,7 +42,7 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Telefono", "Direccion", "DNI", "Fecha"
+                "Nombre", "Telefono", "Direccion", "DNI", "Fecha Alta"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -58,7 +64,7 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton3.setText("Borrar Empleado con DNI:");
+        jButton3.setText("Borrar Cliente con DNI:");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -72,53 +78,54 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
             }
         });
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField3.setText("Lista de Empleados");
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jTextField1.setText("Lista de Clientes");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1014, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1014, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(436, 436, 436))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(416, 416, 416))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -128,20 +135,21 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
         try {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             Object[] rows = new Object[6];
-            EmpleadoDAO Edao = new EmpleadoDAO();
-            ArrayList<Empleado> empleados = Edao.obtenListaEmpleado();
+            ClienteDAO Cdao = new ClienteDAO();
+            ArrayList<Cliente> clientes = Cdao.getListaCliente();
                            
-            for (Empleado empleado : empleados) {
-                rows[0] = empleado.getNombre();
-                rows[1] = empleado.getTelefono();
-                rows[2] = empleado.getDomicilio();
-                rows[3] = empleado.getDni();
-                rows[4] = empleado.getFechaNacimiento();
+            for (Cliente cliente : clientes) {
+                rows[0] = cliente.getNombre();
+                rows[1] = cliente.getTelefono();
+                rows[2] = cliente.getDomicilio();
+                rows[3] = cliente.getDNI();
+                rows[4] = cliente.getFechaAlta();
                 model.addRow(rows);
-            }     
+            }
+         
         } catch (Error e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        }
+        }                         
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -151,8 +159,8 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        EmpleadoDAO Edao = new EmpleadoDAO();
-        Edao.eliminarEmpleadoByDni(jTextFieldDNI.getText());
+        ClienteDAO cDao = new ClienteDAO();
+        cDao.deleteClienteByDNI(jTextFieldDNI.getText());
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -160,6 +168,10 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
     private void jTextFieldDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDNIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDNIActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,23 +190,21 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListadoDeTodosLosEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoDeTodosLosClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListadoDeTodosLosEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoDeTodosLosClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListadoDeTodosLosEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoDeTodosLosClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListadoDeTodosLosEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoDeTodosLosClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListadoDeTodosLosEmpleados().setVisible(true);
+                new ListadoDeTodosLosClientes().setVisible(true);
             }
         });
     }
@@ -205,7 +215,7 @@ public class ListadoDeTodosLosEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldDNI;
     // End of variables declaration//GEN-END:variables
 }

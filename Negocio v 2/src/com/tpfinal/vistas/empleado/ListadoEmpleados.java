@@ -1,4 +1,4 @@
-package com.tpfinal.vistas;
+package com.tpfinal.vistas.empleado;
 
 public class ListadoEmpleados extends javax.swing.JFrame {
 

@@ -1,4 +1,4 @@
-package com.tpfinal.vistas;
+package com.tpfinal.vistas.cliente;
 
 public class ListadoClientes extends javax.swing.JFrame {
 
@@ -47,7 +47,7 @@ public class ListadoClientes extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 329, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(282, 282, 282)

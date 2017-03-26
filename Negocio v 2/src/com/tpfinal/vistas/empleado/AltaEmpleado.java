@@ -1,4 +1,4 @@
-package com.tpfinal.vistas;
+package com.tpfinal.vistas.empleado;
 
 import com.tpfinal.DAO.EmpleadoDAO;
 

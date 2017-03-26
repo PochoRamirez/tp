@@ -1,4 +1,4 @@
-package com.tpfinal.vistas;
+package com.tpfinal.vistas.cliente;
 
 import com.tpfinal.DAO.ClienteDAO;
 import com.tpfinal.modelo.Cliente;

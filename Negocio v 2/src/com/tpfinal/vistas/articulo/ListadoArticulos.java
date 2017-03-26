@@ -1,4 +1,4 @@
-package com.tpfinal.vistas;
+package com.tpfinal.vistas.articulo;
 
 public class ListadoArticulos extends javax.swing.JFrame {
 
@@ -50,7 +50,7 @@ public class ListadoArticulos extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, Short.MAX_VALUE))))
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))))
                 .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(

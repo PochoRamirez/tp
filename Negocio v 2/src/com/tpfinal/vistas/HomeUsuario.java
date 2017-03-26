@@ -1,5 +1,14 @@
 package com.tpfinal.vistas;
 
+import com.tpfinal.vistas.articulo.ListadoArticulos;
+import com.tpfinal.vistas.articulo.ModificarArticulo;
+import com.tpfinal.vistas.articulo.AltaArticulo;
+import com.tpfinal.vistas.venta.ListadoDeVentasPorCliente;
+import com.tpfinal.vistas.venta.ListadoDeVentas;
+import com.tpfinal.vistas.venta.AltaVenta;
+import com.tpfinal.vistas.cliente.ModificarCliente;
+import com.tpfinal.vistas.cliente.ListadoClientes;
+import com.tpfinal.vistas.cliente.AltaCliente;
 import javax.swing.JOptionPane;
 
 // import kiosco.ConexionBD;

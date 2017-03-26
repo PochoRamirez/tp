@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tpfinal.vistas;
+package com.tpfinal.vistas.cliente;
 
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;

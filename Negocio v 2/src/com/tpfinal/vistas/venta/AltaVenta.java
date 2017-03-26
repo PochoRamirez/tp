@@ -1,4 +1,4 @@
-package com.tpfinal.vistas;
+package com.tpfinal.vistas.venta;
 
 import com.tpfinal.DAO.ArticuloDAO;
 import com.tpfinal.modelo.Articulo;

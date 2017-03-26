@@ -1,5 +1,6 @@
 package com.tpfinal.DAO;
 
+import com.tpfinal.utils.HibernateUtil;
 import com.tpfinal.modelo.Empleado;
 import java.util.ArrayList;
 import org.hibernate.HibernateException;
