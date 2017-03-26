@@ -58,12 +58,12 @@ public class ArticuloDAO {
         }
     }
 
-    public Articulo obtenArticulo(String NumArticulo) throws HibernateException {
+    public Articulo obtenArticulo(String id) throws HibernateException {
         Articulo articulo = null;
         try {
             Session sesion = sesionFactory.getCurrentSession();
             sesion.beginTransaction();
-            articulo = (Articulo) sesion.get(Articulo.class, NumArticulo);
+            articulo = (Articulo) sesion.get(Articulo.class, Integer.parseInt(id));
             sesion.close();
         } catch (HibernateException he){
             HibernateUtil.handleException(he);
